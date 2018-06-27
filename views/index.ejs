@@ -17,21 +17,69 @@
                 <div class="col-md-8">
                     <input type="text" class="form-control mb-2" id="task_name" placeholder="Nom de votre tâche">
                 </div>
-                <button class="btn btn-primary mb-2">Ajouter</button>
+                <button class="btn btn-primary mb-2" id="add_task">Ajouter</button>
             </form>
         </div>
         <div class="container">
-            <div class="col-md-8 offset-md-2">
+            <% Liste_taches.forEach(function (element) { %>
+            <div class="col-md-10 offset-md-1 task">
                 <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                    <p>ofihfjezfjezfojezfoijezfojzeofjzofij</p>
+                    <div class="row">
+                        <p class="m-0"><%= element.nom_taches %></p>
+                        <div class="dropdown ml-auto">
+                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Action
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" href="#">Editer</a>
+                                <a class="dropdown-item" href="#"> Supprimer</a>
+                            </div>
+                        </div>
+                    </div>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
             </div>
+            <% })%>
+
+            <p class="">
+                <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    Liste des personnes
+                </button>
+            </p>
+            <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                    <ul>
+                        <% liste_personnes.forEach(function (element) { %>
+                        <li><%=element.nom %> -- <%= element.prenom %></li>
+                        <% }) %>
+                    </ul>
+                </div>
+            </div>
         </div>
     </section>
-
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 

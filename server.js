@@ -8,24 +8,43 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
+//route vers l'index
 app.get('/', function (req, res) {
-    crud.bddListe(function(data){
+    let liste_personnes;
+    // utilisation de plusieurs fonction dans la même route
+    // on stock le resulat dans une nouvelle variable
+    // puis on l'a passe à la vue dans le res.render
+    crud.bddListe_P(function (data) {
+        liste_personnes = data;
+    });
+    crud.bddListe_T(function(data){
         res.render('index', {
-            data: data
+            Liste_taches: data,
+            liste_personnes: liste_personnes
         });
     })
 });
 
+//route pour ajouter une personne
 app.post('/add_person', function (req, res) {
     var nom = req.body.nom;
     console.log(nom);
     var prenom = req.body.prenom;
     console.log(prenom);
-    crud.bddAdd(nom, prenom, function (status) {
+    crud.bddAdd_P(nom, prenom, function (status) {
         res.send(status);
     })
 });
+
+//route pour ajouter une tâche
+app.post('/add_task', function (req, res) {
+    var task = req.body.task;
+    crud.bddAdd_T(task, function (status) {
+        res.send(status);
+    })
+});
+
+
 
 app.listen(port, function () {
     console.log("Server ON / Port: " + port);
