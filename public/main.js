@@ -44,7 +44,30 @@ $("#add_task").on('click', function () {
 
 $("#update_modal").on('show.bs.modal', function (event) {
     var link = $(event.relatedTarget);
-    var recipient = link.data('name');
+    var task_name = link.data('name');
+    var id = link.data('id');
     var modal = $(this);
-    modal.find('#update_task').val(recipient)
+    modal.find('#update_task').val(task_name)
+    modal.find('#task_id').val(id)
+});
+
+//Editer une tâche 
+$("#update_button").on('click', function () {
+    let task;
+    let task_id ;
+    task = $("#task_name").val();
+    task_id = $("#task_id").val();
+    $.post(url+"update_task",{
+        task : task ,
+        task_id : task_id
+    },
+        function (status) {
+            if (status === 'success'){
+                console.log("tâche modifiée");
+            }else {
+                console.log('erreur lors de l\'ajout');
+            }
+        }
+    )
+
 });
