@@ -39,3 +39,12 @@ $("#add_task").on('click', function () {
     )
 
 });
+
+// recuperation du modal pré remplie avec les données à modifier
+
+$("#update_modal").on('show.bs.modal', function (event) {
+    var link = $(event.relatedTarget);
+    var recipient = link.data('name');
+    var modal = $(this);
+    modal.find('#update_task').val(recipient)
+});

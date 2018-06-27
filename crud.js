@@ -67,6 +67,25 @@ exports.bddAdd_T = function(task, cb){
     })
 };
 
+// fonction permettant d'éditer une taches en bdd
+exports.bddEdit_T = function (task_name, task_id) {
+    bdd.connect(url, function (err, database) {
+        assert.equal(null, err);
+        let dbo = database.db("planning");
+        dbo.collection("taches").findOneAndUpdate({_id: ObjectID(task_id)}, {
+            $set:{
+                nom_taches: task_name
+            }
+        }), function (err) {
+                if (err){
+                    console.log("erreur de MAJ");
+                }else {
+                    console.log("ajout réussi");
+                }
+        }
+        database.close();
+    })
+}
 /*
 function dbbListe(){
 

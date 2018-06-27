@@ -32,7 +32,7 @@
                             </a>
 
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item" href="#">Editer</a>
+                                <a class="dropdown-item" data-toggle="modal" href="#update_modal" data-id="<%= element._id %>" data-name="<%= element.nom_taches %>">Editer</a>
                                 <a class="dropdown-item" href="#"> Supprimer</a>
                             </div>
                         </div>
@@ -61,21 +61,23 @@
         </div>
     </section>
     <!-- Modal -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="update_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    ...
+                    <form>
+                        <label for="update_task">Modifier la tâche</label>
+                        <input type="text" class="form-control" value="" id="update_task">
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-primary" id="update_button">Sauvegarder</button>
                 </div>
             </div>
         </div>
