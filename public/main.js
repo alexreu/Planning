@@ -1,15 +1,18 @@
-var url = "localhost:3012/";
+var url = "http://localhost:3012/";
 $("#add_person").on('click', function () {
     let name;
     let firstname;
-    name = ("#name").val();
-    firstname = ("#first_name").val();
+    name = $("#name").val();
+    firstname = $("#first_name").val();
 
-    $.post(url+"/add_person",{
-        name: name,
-        firstname: firstname
+    console.log(name);
+    console.log(firstname);
+
+    $.post(url+"add_person",{
+        nom: name,
+        prenom: firstname
     },
-        function (status) {
+        function (result, status) {
             if (status === 'success'){
                 console.log("personne ajoutée");
             }else {
