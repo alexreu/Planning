@@ -16,6 +16,24 @@ exports.bddListe = function(cb){
     });
 };
 
+exports.bddAdd = function(name, firstname, cb){
+    bdd.connect(url, function (err, database) {
+        assert.equal(null, err);
+        console.log("connexion BDD Ok");
+        let dbo = database.db("planning");
+        dbo.collection("personnes").insertOne({nom: name, prenom: firstname}, function (err, status) {
+            if (!err) {
+                status = "success";
+                cb(status)
+            } else {
+                status = "error";
+                cb(status)
+            }
+        });
+        database.close()
+    })
+}
+
 /*
 function dbbListe(){
 
