@@ -2,6 +2,7 @@ const express = require ('express');
 const app = express();
 const port = 3012;
 const crud = require ('./crud.js');
+const bodyParser = require('body-parser');
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
@@ -11,6 +12,14 @@ app.get('/', function (req, res) {
         res.render('index', {
             data: data
         });
+    })
+});
+
+app.post('/add_person', function (req, res) {
+    var name = req.body.name;
+    var firstname = req.body.firstname;
+    crud.bddAdd(name, firstname, function (status) {
+        res.send(status);
     })
 });
 
