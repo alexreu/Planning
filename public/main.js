@@ -45,6 +45,8 @@ $("#add_task").on('click', function () {
 $("#update_modal").on('show.bs.modal', function (event) {
     var link = $(event.relatedTarget);
     var recipient = link.data('name');
+    var id = link.data('id');
     var modal = $(this);
     modal.find('#update_task').val(recipient)
+    modal.find('#task_id').val(id)
 });

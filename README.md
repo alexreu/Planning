@@ -7,6 +7,6 @@
     - Attribuer une personne à cette tâche
     - Ajouter une notion de temps / date 
     - Pouvoir editer la tâche
-    - Pouvoir supprimer la tâche
+    - Pouvoir desactiver la tâche
     
 - Techno utilisées : NodeJs, Mongodb, EJS, html, css, bootstrap
