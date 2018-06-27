@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/alexreu/Planning#readme",
   "dependencies": {
+    "ejs": "^2.6.1",
     "express": "^4.16.3",
     "mongoose": "^5.1.7",
     "nodemon": "^1.17.5"
