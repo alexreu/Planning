@@ -12,6 +12,9 @@
   </head>
   <body>
     <section id="main">
+        <div class="container text-center pb-4">
+            <h1 class="text-uppercase font-weight-bold title_app">Planning</h1>
+        </div>
         <div class="container">
             <form class="form-row justify-content-center">
                 <div class="col-md-8">
@@ -24,43 +27,74 @@
             <% Liste_taches.forEach(function (element) { %>
             <div class="col-md-10 offset-md-1 task">
                 <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                    <div class="row">
-                        <p class="m-0"><%= element.nom_taches %></p>
-                        <div class="dropdown ml-auto">
-                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Action
-                            </a>
-
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item" data-toggle="modal" href="#update_modal" data-id="<%= element._id %>" data-name="<%= element.nom_taches %>">Editer</a>
-                                <a class="dropdown-item" href="#"> Supprimer</a>
-                            </div>
+                    <div class="row align-items-center">
+                        <p class="m-0 pl-3"><%= element.nom_taches %></p>
+                        <div class="ml-auto">
+                            <a class="btn btn-secondary" data-toggle="modal" href="#update_modal" data-id="<%= element._id %>" data-name="<%= element.nom_taches %>">Editer</a>
                         </div>
                     </div>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                    <button type="button" class="close" data-id="<%= element._id %>" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true" >&times;</span>
                     </button>
                 </div>
             </div>
             <% })%>
 
-            <p class="">
-                <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                    Liste des personnes
-                </button>
-            </p>
-            <div class="collapse" id="collapseExample">
-                <div class="card card-body">
-                    <ul>
-                        <% liste_personnes.forEach(function (element) { %>
-                        <li><%=element.nom %> -- <%= element.prenom %></li>
-                        <% }) %>
-                    </ul>
+            <div class=" container">
+                <div class="col-md-10 offset-md-1 p-0">
+                    <button class="btn btn-primary mr-3" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        Liste des personnes
+                    </button>
+                    <button class="btn btn-primary rounded-circle" type="button" data-toggle="modal"    data-target="#addPerson_modal" >+</button>
+                </div>
+            </div>
+            <div class="container mt-3">
+                <div class="col-md-10 offset-md-1 p-0">
+                    <div class="collapse" id="collapseExample">
+                        <div class="card card-body">
+                            <ul class="list-group list-group-flush">
+                                <% liste_personnes.forEach(function (element) { %>
+                                <li class="list-group-item"><%=element.nom %> -- <%= element.prenom %></li>
+                                <% }) %>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ml-auto">
+        </div>
+        <!-- Modal add person -->
+        <div class="modal fade" id="addPerson_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ajout personne</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="name">Nom</label>
+                                <input type="text" class="form-control" id="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="first_name">Prénom</label>
+                                <input type="text" class="form-control" id="first_name" required>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button id="add_person" class="btn btn-primary">Ajouter</button>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Modal -->
+    <!-- Modal update -->
     <div class="modal fade" id="update_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -72,8 +106,8 @@
                 <div class="modal-body">
                     <form>
                         <label for="update_task">Modifier la tâche</label>
-                        <input type="text" class="form-control" value="" id="update_task">
-                        <input type="hidden" id="task_id">
+                        <input type="text" class="form-control" value="" id="update_task" required>
+                        <input type="hidden" class="form-control" value="" id="task_id">
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -83,29 +117,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-    <h1>Ajout personnes</h1>
-    <form>
-        <div class="form-group">
-            <label for="name">Nom</label>
-            <input type="text" class="form-control" id="name">
-        </div>
-        <div class="form-group">
-            <label for="first_name">Prénom</label>
-            <input type="text" class="form-control" id="first_name">
-        </div>   
-    </form>
-    <button id="add_person" class="btn btn-primary">Ajouter</button>
-
-    <h1>Ajout des taches</h1>
-
-
-
-
-
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>

@@ -44,7 +44,19 @@ app.post('/add_task', function (req, res) {
     })
 });
 
+//route pour éditer une tâche
+app.post('/update_task', function (req, res) {
+    var task = req.body.task;
+    var task_id = req.body.task_id;
+    crud.bddEdit_T(task, task_id, function (status) {
+        res.send(status);
+    })
+});
 
+app.post('/delete_task', function (req, res) {
+    var task_id = req.body.task_id;
+    crud.bddDelete_T(task_id);
+});
 
 app.listen(port, function () {
     console.log("Server ON / Port: " + port);

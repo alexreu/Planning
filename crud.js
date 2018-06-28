@@ -76,19 +76,24 @@ exports.bddEdit_T = function (task_name, task_id) {
             $set:{
                 nom_taches: task_name
             }
-        }), function (err) {
+        }), function (err, status) {
+                var status;
                 if (err){
                     console.log("erreur de MAJ");
                 }else {
+                    status = "success";
                     console.log("ajout réussi");
                 }
-        }
+        };
         database.close();
     })
-}
-/*
-function dbbListe(){
-
-}
-
-exports.bddListe()*/
+};
+// fonction permettant de supprimer une tache
+exports.bddDelete_T = function (task_id) {
+    bdd.connect(url, function (err, database) {
+        assert.equal(null, err);
+        let dbo = database.db("planning");
+        dbo.collection("taches").findOneAndDelete({_id: ObjectID(task_id)})
+        database.close();
+    })
+};
