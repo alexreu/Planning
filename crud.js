@@ -76,13 +76,9 @@ exports.bddEdit_T = function (task_name, task_id) {
             $set:{
                 nom_taches: task_name
             }
-        }), function (err, status) {
-                var status;
+        }), function (err) {
                 if (err){
                     console.log("erreur de MAJ");
-                }else {
-                    status = "success";
-                    console.log("ajout réussi");
                 }
         };
         database.close();

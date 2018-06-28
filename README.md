@@ -6,7 +6,7 @@
     - Ajouter une personne / OK
     - Attribuer une personne à cette tâche
     - Ajouter une notion de temps / date 
-    - Pouvoir editer la tâche
-    - Pouvoir desactiver la tâche
+    - Pouvoir editer la tâche /OK
+    - Pouvoir desactiver la tâche / OK
     
 - Techno utilisées : NodeJs, Mongodb, EJS, html, css, bootstrap

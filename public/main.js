@@ -62,16 +62,10 @@ $("#update_button").on('click', function () {
     $.post(url+"update_task",{
         task : task ,
         task_id : task_id
-    },
-        function (status) {
-            if (status === 'success'){
-                console.log("tâche modifiée");
-                location.reload();
-            }else {
-                console.log('erreur lors de l\'ajout');
-            }
-        }
-    )
+    }).done(function(){
+        console.log("test");
+        location.reload();
+    });
 });
 
 $(".close").on('click', function () {
