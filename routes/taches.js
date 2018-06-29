@@ -6,12 +6,14 @@ var router = express.Router();
 var taches = require("../controllers/tachesControllers");
 
 
-// route pour créer une tache 
-//router.get ('/create', taches.);
-
 // route pour lister les taches
 router.get('/', taches.list);
 
+// route pour créer une tache
+router.get ('/creer', taches.creer)
+
+//sauvegarder un legume. /!\ cest un POST
+router.post("/save", taches.save);
 
 
 //export du module router
