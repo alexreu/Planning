@@ -12,17 +12,22 @@
 </head>
     <body>
         <section class="container">
-            <form action="save" method="post">
-                <div class="form-group">
-                    <label for="nom">Nom de la tache</label>
-                    <input type="text" name="nom" id="nom">
-                </div>
-                <div class="form-group">
-                    <label for="commentaire">Votre commentaire</label>
-                    <textarea name="commentaire" id="commentaire" cols="30" rows="10"></textarea>
-                </div>
-                <button class="btn btn-primary" type="submit">ajouter</button>
-            </form>
+            <h1 class="text-center pb-5 pt-5">Veuillez Saisir les tachees à ajouter</h1>
+            <div class="col-md-6 offset-md-3">
+                <form action="save" method="post">
+                    <div class="form-group">
+                        <label for="nom">Nom de la tache</label>
+                        <input type="text" name="nom" id="nom" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="commentaire">Votre commentaire</label>
+                        <textarea name="commentaire" id="commentaire" cols="30" rows="10" class="form-control"></textarea>
+                    </div>
+                    <button class="btn btn-primary" type="submit">ajouter</button>
+                    <button class="btn btn-danger" type="reset">Reset Formulaire</button>
+                    <a href="http://localhost:3012/tache" class="btn btn-info">Retour accueil</a>
+                </form>
+            </div>
         </section>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
