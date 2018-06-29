@@ -30,13 +30,13 @@
                     <td><%= element.commentaire %></td>
                     <td>
                         <button class="btn btn-primary btn-block edit" data-toggle="modal" href="#update_modal" data-id= "<%= element._id%>" data-name="<%= element.nom %>" data-com="<%= element.commentaire%>" >Editer la tache</button>
-                        <button class="btn btn-danger btn-block">Supprimer la tache</button>
+                        <a href="/taches/delete/<%= element._id %>" class="btn btn-danger btn-block">Supprimer la tache</a>
                     </td>
                 </tr>
                 <% }) %>
                 </tbody>
             </table>
-            <a href="http://localhost:3012/tache/creer" class="btn btn-primary">Ajouter des taches</a>
+            <a href="/taches/creer" class="btn btn-primary">Ajouter des taches</a>
         </div>
 
            <!-- Modal -->

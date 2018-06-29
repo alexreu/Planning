@@ -29,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //app.use('/', indexRouter);
 //app.use('/users', usersRouter);
 var taches = require('./routes/taches');
-app.use('/tache', taches);
+app.use('/taches', taches);
 
 var personnes = require('./routes/personnes');
 app.use('/personne',personnes);

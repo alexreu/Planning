@@ -54,6 +54,17 @@ tachesController.edit = function(req, res) {
     });
 };
 
+//fonction supprimer
+tachesController.delete = function(req, res){
+    var id= req.params.id;
+    taches.findOneAndDelete(id, function (err) {
+        if(err){
+            console.log("error de suppression")
+        }else {
+            res.redirect("/taches");
+        }
+    })
+}
 
 
 module.exports = tachesController;
