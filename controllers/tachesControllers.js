@@ -1,6 +1,6 @@
 /*controller pour les taches */
 var mongoose = require('mongoose');
-var taches = require('../models/models');
+var taches = require('../models/taches');
 
 var tachesController = {};
 

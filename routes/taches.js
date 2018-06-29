@@ -3,11 +3,14 @@ var router = express.Router();
 
 
 // appel tachesController
-var taches = require("../controllers/tachesControllers")
+var taches = require("../controllers/tachesControllers");
 
 
 // route pour créer une tache 
-router.get ('/create', tache)
+//router.get ('/create', tache);
+
+// route pour lister les taches
+router.get('/', taches.list);
 
 
 
