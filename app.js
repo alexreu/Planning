@@ -11,7 +11,7 @@ var app = express();
 
 // Require Mongoose et connection à la bdd
 var mongoose = require('mongoose');
-var url = "mongodb://localhost/Planning";
+var url = "mongodb://localhost/planning";
 mongoose.Promise = global.Promise;
 mongoose.connect(url)
     .then (() => console.log('Connexion BDD OK'));
