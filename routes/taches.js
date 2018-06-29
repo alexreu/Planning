@@ -10,7 +10,7 @@ var taches = require("../controllers/tachesControllers");
 router.get('/', taches.list);
 
 // route pour créer une tache
-router.get ('/creer', taches.creer)
+router.get ('/creer', taches.creer);
 
 //sauvegarder un legume. /!\ cest un POST
 router.post("/save", taches.save);
