@@ -1,11 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <h1>welcome</h1>
+    <% data.forEach(function(element){ %>
+      <p><%= element.id_tache %></p>
+      <p><%= element.id_personne %></p>
+      <p>element.date_debut</p>
+      <p>element.date_fin</p>
+      <p>element.statut</p>
+    <% }) %>
+
+    <form action="/add">
+        <input type="text" name="id_tache">
+        <input type="text" name="id_personne">
+        <input type="text" name="date_debut">
+        <input type="text" name="date_fin">
+        <input type="text" name="statut">
+    </form>
   </body>
 </html>

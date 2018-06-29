@@ -26,7 +26,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-//app.use('/', indexRouter);
+var tacheEffectuer = require('./routes/index');
+app.use('/', tacheEffectuer);
 //app.use('/users', usersRouter);
 var taches = require('./routes/taches');
 app.use('/taches', taches);

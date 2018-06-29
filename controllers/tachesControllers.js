@@ -64,7 +64,7 @@ tachesController.delete = function(req, res){
             res.redirect("/taches");
         }
     })
-}
+};
 
 
 module.exports = tachesController;
