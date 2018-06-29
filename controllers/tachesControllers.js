@@ -31,7 +31,7 @@ tachesController.save = function(req, res){
             console.log(err);
             res.render("../views/planning/addTache");
         } else{
-            console.log("creation legume OK");
+            console.log("creation tache OK");
             res.redirect("/tache");
         } 
     });
