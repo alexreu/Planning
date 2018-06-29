@@ -5,4 +5,4 @@ var personnesSchema = new mongoose.Schema({
     mobile : String,
 });
 
-module.exports = mongoose.model("personnes", personnesSchema);
+module.exports = mongoose.model("Personne", personnesSchema);
