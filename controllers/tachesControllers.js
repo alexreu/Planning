@@ -49,7 +49,7 @@ tachesController.edit = function(req, res) {
         if (err) {
             console.log(err);
         } else {
-            res.redirect("/tache");
+            res.redirect("/");
         }
     });
 };
@@ -61,7 +61,7 @@ tachesController.delete = function(req, res){
         if(err){
             console.log("error de suppression")
         }else {
-            res.redirect("/taches");
+            res.redirect("/");
         }
     })
 }
