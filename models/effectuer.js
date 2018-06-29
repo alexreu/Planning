@@ -1,3 +1,4 @@
+var mongoose = require('mongoose');
 // Schema de données de la collection tâches à effectuer
 var effectuerSchema = new mongoose.Schema({
     id_tache: {type: Schema.Type.ObjectId, ref:'Tache'},
