@@ -1,5 +1,46 @@
 <!--vue pour lister les taches -->
-<% taches.forEach(function (element) { %>
-    <p><%= element.nom %></p>
-    <p><%= element.commentaire %></p>
-<% }) %>
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Liste des taches</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+</head>
+    <body>
+        <div class="container">
+            <h1 class="text-center pt-5 pb-5">Liste Des Taches</h1>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Taches</th>
+                    <th scope="col">Comentaire</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% taches.forEach(function (element) { %>
+                <tr>
+                    <td><%= element.nom %></td>
+                    <td><%= element.commentaire %></td>
+                    <td>
+                        <button class="btn btn-primary btn-block">Editer la tache</button>
+                        <button class="btn btn-danger btn-block">Supprimer la tache</button>
+                    </td>
+                </tr>
+                <% }) %>
+                </tbody>
+            </table>
+            <a href="http://localhost:3012/tache/creer" class="btn btn-primary">Ajouter des taches</a>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+                integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    </body>
+</html>
