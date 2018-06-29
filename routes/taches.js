@@ -16,5 +16,10 @@ router.get ('/creer', taches.creer)
 router.post("/save", taches.save);
 
 
+
+//editer une tâche
+router.get("/edit/:id", taches.edit);
+
+
 //export du module router
 module.exports = router;
