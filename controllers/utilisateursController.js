@@ -41,19 +41,19 @@ utilisateursController.edit = function(req, res) {
     console.log(req.body.task_id);
     taches.findOneAndUpdate(req.body.task_id, {
         $set: {
-            nom: req.body.update_task,
-            commentaire: req.body.update_com
+            nom: req.body.update_nom,
+            prenom: req.body.update_prenom,
+            mobile : req.body.update_mobile
         }
-    }, function (err, taches) {
+    }, function (err, personnes) {
         if (err) {
             console.log(err);
         } else {
-            res.redirect("/tache");
+            res.redirect("/personne");
         }
     });
 };
 
-//------------------------A faire
 //fonction supprimer un utilisateur
 utilisateursController.delete = function(req, res){
     var id= req.params.id;
@@ -61,7 +61,7 @@ utilisateursController.delete = function(req, res){
         if(err){
             console.log("error de suppression")
         }else {
-            res.redirect("/taches");
+            res.redirect("/");
         }
     })
 }
