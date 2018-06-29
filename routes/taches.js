@@ -7,7 +7,7 @@ var taches = require("../controllers/tachesControllers")
 
 
 // route pour créer une tache 
-router.get ('/create', tache)
+router.get ('/creer', taches.creer)
 
 
 
