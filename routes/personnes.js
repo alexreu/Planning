@@ -13,6 +13,4 @@ router.get("/creer", personne.create);
 //sauvegarder une personne
 router.post("/save", personne.save);
 
-
-
 module.exports = router;

@@ -49,16 +49,17 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form action="tache/edit" method="post">
                     <label for="update_task">Modifier la tâche</label>
-                    <input type="text" class="form-control" id="update_task">
-                    <textarea rows="" cols="" class="form-control" id="update_com"></textarea>
-                    <input type="hidden" class="form-control" id="task_id">
+                    <input type="text" class="form-control" id="update_task" name="update_task">
+                    <textarea rows="" cols="" class="form-control" id="update_com" name="update_com"></textarea>
+                    <input type="hidden" class="form-control" id="task_id" value="" name="task_id">
+                    <button type="submit" class="btn btn-primary" id="update_button">Mise a jour</button>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="update_button">Sauvegarder</button>
+
             </div>
         </div>
     </div>
@@ -66,7 +67,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-        <script src="/taches.js">
+        <script src="javascripts/taches.js">
         </script>
     </body>
 </html>

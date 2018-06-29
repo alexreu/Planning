@@ -18,7 +18,7 @@ router.post("/save", taches.save);
 
 
 //editer une tâche
-router.get("/edit/:id", taches.edit);
+router.post("/edit", taches.edit);
 
 
 //export du module router
