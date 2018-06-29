@@ -11,7 +11,7 @@ usersController.create = function(req, res){
 
 //enregistrement des personnes
 usersController.save = function(req, res){
-    var personne = new Personnes(req.body);
+    var personne = new utilisateur(req.body);
 
     personne.save(function(err){
         if(err){
@@ -24,20 +24,21 @@ usersController.save = function(req, res){
     });
 };
 
+// //Liste les utilisateurs
+usersController.list = function(req, res) {
+    utilisateur.find({}).exec(function(err, personnes){
+        if(err){
+            console.log('Error : ', err);
+        }else{
+            res.render("../views/planning/personne",{personnes:personnes} );
+        } 
+    });
+};
+
 //export du module
 module.exports = usersController;
 
 
-// //Liste les utilisateurs
-// usersController.list = function(req, res) {
-//     personne.find({}).exec(function(err, personnes){
-//         if(err){
-//             console.log('Error : ', err);
-//         }else{
-//             res.render("../views/index",{personnes:personnes} );
-//         } 
-//     });
-// };
 
 // //Affiche 1 legume par son id
 // usersController.show = function(req, res) {

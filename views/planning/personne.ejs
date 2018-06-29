@@ -1,30 +1,6 @@
-<!-- vue formulaire ajout de personnes-->
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Création d'un utilisateur</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- TODO -->
-    <!--<link rel="stylesheet" type="text/css" media="screen" href="main.css" />-->
-</head>
-<body>
-    <div class="container">
-        <!--<h3><a href="/">Liste des utilisateurs</a></h3>-->
-        <h1>Création d'un utilisateur</h1>
-        <!-- TODO styler le form-->
-
-        <form action="save" method="POST">
-            <label for="nom">Nom</label>
-            <input type="text" name="nom" />
-            <label for="prenom">Prénom</label>
-            <input type="text" name="prenom" />
-            <label for="num">Numéro de téléphone</label>
-            <input type="text" name="mobile"/>
-            <button type="submit" value="Enregistrer" ></button>
-        </form>
-
-    </div>
-</body>
-</html>
+<!--vue qui liste les personnes-->
+<% personnes.forEach(function (element){ %>
+    <%= element.nom%>
+    <%= element.prenom%>
+    <%= element.mobile%>
+    <% });%>
