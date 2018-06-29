@@ -7,4 +7,4 @@ var tachesSchema = new mongoose.Schema({
     commentaire: String,
 });
 
-module.exports = mongoose.model("taches", tachesSchema);
+module.exports = mongoose.model("Tache", tachesSchema);
