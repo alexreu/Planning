@@ -31,13 +31,24 @@ tachesController.save = function(req, res){
             console.log(err);
             res.render("../views/planning/addTache");
         } else{
-            console.log("creation legume OK");
+            console.log("creation tache OK");
             res.redirect("/tache");
         } 
     });
 };
 
+//edition une tâche  par son id
+tachesController.edit = function(req, res){
+    var tache = new taches(req.body);
 
+    Legume.findOne({_id:req.params.id}).exec(function(err, tache){
+        if(err){
+            console.log("Error ", err);
+        } else{
+            res.render("../views/tache/edit",{tache: tache} );
+        } 
+    });
+};
 
 
 
