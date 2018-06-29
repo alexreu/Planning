@@ -9,6 +9,13 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+// Require Mongoose et connection à la bdd
+var mongoose = require('mongoose');
+var url = "mongodb://localhost/Planning";
+mongoose.Promise = global.Promise;
+mongoose.connect(url)
+    .then (() => console.log('Connexion BDD OK'));
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
