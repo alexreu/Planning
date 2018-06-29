@@ -37,7 +37,18 @@ tachesController.save = function(req, res){
     });
 };
 
+//edition une tâche  par son id
+tachesController.edit = function(req, res){
+    var tache = new taches(req.body);
 
+    Legume.findOne({_id:req.params.id}).exec(function(err, tache){
+        if(err){
+            console.log("Error ", err);
+        } else{
+            res.render("../views/tache/edit",{tache: tache} );
+        } 
+    });
+};
 
 
 

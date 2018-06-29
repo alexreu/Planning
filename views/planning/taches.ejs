@@ -29,7 +29,7 @@
                     <td><%= element.nom %></td>
                     <td><%= element.commentaire %></td>
                     <td>
-                        <button class="btn btn-primary btn-block">Editer la tache</button>
+                        <button class="btn btn-primary btn-block edit" data-toggle="modal" href="#update_modal" data-id= "<%= element._id%>" data-name="<%= element.nom %>" data-com="<%= element.commentaire%>" >Editer la tache</button>
                         <button class="btn btn-danger btn-block">Supprimer la tache</button>
                     </td>
                 </tr>
@@ -38,9 +38,35 @@
             </table>
             <a href="http://localhost:3012/tache/creer" class="btn btn-primary">Ajouter des taches</a>
         </div>
+
+           <!-- Modal -->
+    <div class="modal fade" id="update_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <label for="update_task">Modifier la tâche</label>
+                    <input type="text" class="form-control" id="update_task">
+                    <textarea rows="" cols="" class="form-control" id="update_com"></textarea>
+                    <input type="hidden" class="form-control" id="task_id">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="update_button">Sauvegarder</button>
+            </div>
+        </div>
+    </div>
+</div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
-                integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+        <script src="/taches.js">
+        </script>
     </body>
 </html>
