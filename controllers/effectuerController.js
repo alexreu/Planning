@@ -1,8 +1,13 @@
 var mongoose = require('mongoose');
 
 var effectuer = require("../models/effectuer");
+var taches = require("../models/taches");
+var personnes = require("../models/personnes");
 
 var effectuerController = {};
+
+var personnesList;
+var tachesList;
 
 // fonction permettant de liste toutes les taches avec le nom des personnes qui l'effectue
 effectuerController.list = function(req, res){
@@ -10,25 +15,38 @@ effectuerController.list = function(req, res){
     populate('id_tache').
     populate('id_personne').
     exec(function (err, result) {
-        console.log(typeof result[2].id_tache);
         if(err){
             console.log("error");
         }else {
-            console.log("resultat : " + result[2].id_tache);
-            res.render("../views/effectuer/effectuer", {data: result});
+            console.log(result[0].id_tache[0].nom);
+            res.render("../views/effectuer/effectuer", {
+                data: result,
+                personnes: personnesList,
+                taches: tachesList,
+            });
         }
     })
 };
 
-effectuerController.listX = function(req, res){
-    effectuer.find().
-    populate('id_tache').
-    populate('id_personne').
-    exec(function (err, result) {
-        console.log("je suis result: ", result);
-    })
-};
+// récuperation de la liste des personnes pour la liste déroulante
+personnes.find({}).exec(function (err, personnes) {
+    if(err){
+        console.log("error")
+    } else {
+        personnesList = personnes;
+    }
+});
 
+// recuperation des taches pour la liste déroulante
+taches.find({}).exec(function (err, taches) {
+    if(err){
+        console.log("error")
+    }else {
+        tachesList = taches;
+    }
+});
+
+// fonction qui ajout une tache à effectuer
 effectuerController.add = function(req, res){
     var tacheEffectuer = new effectuer(req.body);
     console.log(tacheEffectuer);
@@ -42,4 +60,16 @@ effectuerController.add = function(req, res){
     })
 };
 
+// fonction suppression tache à effectuer
+effectuerController.del = function(req, res){
+    var id = req.params.id;
+    console.log(id);
+    effectuer.findByIdAndDelete(id, function (err) {
+        if(err){
+            console.log("erreur lors de la suppression");
+        }else {
+            res.redirect('/effectuer');
+        }
+    })
+};
 module.exports = effectuerController;

@@ -55,11 +55,9 @@ tachesController.edit = function(req, res) {
 };
 
 //fonction supprimer
-
-// TODO corriger la fonction delete
 tachesController.delete = function(req, res){
     var id= req.params.id;
-    taches.findOneAndDelete(id, function (err) {
+    taches.findByIdAndDelete(id, function (err) {
         if(err){
             console.log("error de suppression")
         }else {

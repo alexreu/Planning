@@ -6,7 +6,6 @@ var effectuerSchema = new mongoose.Schema({
     id_personne: [{type: mongoose.Schema.ObjectId, ref: 'personnes'}],
     date_debut: String,
     date_fin : String,
-    statut: Boolean,
 });
 
 module.exports = mongoose.model("effectuer", effectuerSchema);
