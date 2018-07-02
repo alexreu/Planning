@@ -18,7 +18,6 @@ effectuerController.list = function(req, res){
         if(err){
             console.log("error");
         }else {
-            console.log(result[0].id_tache[0].nom);
             res.render("../views/effectuer/effectuer", {
                 data: result,
                 personnes: personnesList,
@@ -70,6 +69,6 @@ effectuerController.del = function(req, res){
         }else {
             res.redirect('/effectuer');
         }
-    })
+    });
 };
 module.exports = effectuerController;

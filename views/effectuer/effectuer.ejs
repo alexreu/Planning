@@ -48,16 +48,25 @@
         <div class="container pt-5">
             <% data.forEach(function (element) { %>
             <div class="alert alert-secondary" role="alert">
-                <span>
-                    <b>Du:</b> <%= element.date_debut %> <b>Au:</b> <%= element.date_fin%> /
-                    <% element.id_tache.forEach(function (element) { %>
-                        <%= element.nom %> --
-                        <%= element.commentaire %>
-                    <% }) %>
-                </span>
-                <a href="effectuer/del/<%= element._id %>" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </a>
+                <div class="row align-items-center pr-5 pl-5">
+                    <span>
+                        <b>Du:</b> <%= element.date_debut %> <b>Au:</b> <%= element.date_fin%> /
+                        <% element.id_tache.forEach(function (element) { %>
+                            <%= element.nom %> --
+                            <%= element.commentaire %>
+                        <% }) %>
+                        /
+                        <% element.id_personne.forEach(function (element) { %>
+                            <%= element.prenom %> --
+                            <%= element.nom %>
+                        <% }) %>
+                    </span>
+                    <div class="ml-auto">
+                        <!--TODO modal edition de la tache a effectuer-->
+                        <button class="btn btn-primary">Editer</button>
+                        <a href="/effectuer/delete/<%= element._id %>" class="btn btn-primary">X</a>
+                    </div>
+                </div>
             </div>
             <% }) %>
         </div>
