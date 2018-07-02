@@ -55,6 +55,8 @@ tachesController.edit = function(req, res) {
 };
 
 //fonction supprimer
+
+// TODO corriger la fonction delete
 tachesController.delete = function(req, res){
     var id= req.params.id;
     taches.findOneAndDelete(id, function (err) {
@@ -65,6 +67,5 @@ tachesController.delete = function(req, res){
         }
     })
 };
-
 
 module.exports = tachesController;
