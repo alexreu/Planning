@@ -2,13 +2,15 @@ var express = require('express');
 var router = express.Router();
 
 
-var effectuer = require("../controllers/utilisateursController");
+var effectuer = require("../controllers/effectuerController");
 
 /* GET home page. */
-router.get('/', personne.list );
+router.get('/', effectuer.list);
 
-//cree une personne
-// router.get("/creer", personne.create);
+//cree une tache à effectuer
+router.post("/creer", effectuer.add);
+
+router.get('/test', effectuer.listX);
 //
 // //sauvegarder une personne
 // router.post("/save", personne.save);

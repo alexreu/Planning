@@ -32,7 +32,7 @@ tachesController.save = function(req, res){
             res.render("../views/taches/addTache");
         } else{
             console.log("creation tache OK");
-            res.redirect("/tache");
+            res.redirect("/taches");
         } 
     });
 };
@@ -61,7 +61,7 @@ tachesController.delete = function(req, res){
         if(err){
             console.log("error de suppression")
         }else {
-            res.redirect("/");
+            res.redirect("/taches");
         }
     })
 };
