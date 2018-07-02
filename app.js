@@ -33,7 +33,10 @@ var taches = require('./routes/taches');
 app.use('/taches', taches);
 
 var personnes = require('./routes/personnes');
-app.use('/personne',personnes);
+app.use('/personnes',personnes);
+
+var effectuer = require('./routes/effectuer');
+app.use('/effectuer', effectuer);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

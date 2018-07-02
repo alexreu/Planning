@@ -1,0 +1,92 @@
+<!--vue qui liste les personnes-->
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Personne</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+</head>
+<body>
+    <h1 class="text-center pt-5 pb-5">Liste des personnes</h1>
+
+    <section class="container">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">nom</th>
+                <th scope="col">prenom</th>
+                <th scope="col">numero</th>
+                <th scope="col">Activer</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% personnes.forEach(function (element){ %>
+            <tr>
+                <td><%= element.nom%></td>
+                <td><%= element.prenom%></td>
+                <td><%= element.mobile%></td>
+                <td>
+                    <div class="form-check">
+                        <% if (element.status){ %>
+                        <input class="form-check-input" disabled type="checkbox" value="" checked id="">
+                        <% }else{ %>
+                        <input class="form-check-input" disabled type="checkbox" value="" id="">
+                        <% } %>
+                    </div>
+                </td>
+                <td>
+                    <button type="button" data-toggle="modal" data-target="#editModal" class="btn btn-primary" data-nom="<%= element.nom%>" data-prenom="<%= element.prenom%>" data-numero="<%= element.mobile%>" data-statut="<%= element.status%>" data-id="<%= element._id%>">Editer</button>
+                    <a href="personnes/delete/<%= element._id %>" class="btn btn-danger text-white">Supprimer</a>
+                </td>
+            </tr>
+            <% });%>
+            </tbody>
+        </table>
+        <a href="personnes/creer" class="btn btn-primary">Ajout personnes</a>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Mise a jour de la personne</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="personnes/edit" method="post">
+                        <div class="form-group">
+                            <label for="nom">Nom</label>
+                                <input type="text" class="form-control" id="nom" name="update_name">
+                            <label for="prenom">Prénom</label>
+                                <input type="text" class="form-control" id="prenom" name="update_surname" required>
+                            <label for="mobile">Numero de mobile</label>
+                                <input type="number"  class="form-control" id="mobile" name="update_number">
+                            <label for="status">Statut ( à décocher pour desactiver une personne )</label>
+                                <input class="form-control" type="checkbox" value="" id="status" name="update_status" required>
+                                <input type="hidden" id="person_id" name="person_id" required>
+                            <button type="submit" class="btn btn-primary">Mise à jour</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script src="../javascripts/personne.js"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!-- vue formulaire ajout de personnes-->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ajout personne</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+</head>
+<body>
+    <h1 class="text-center pb-5 pt-5">Création d'un utilisateur</h1>
+    <section class="container">
+        <div class="col-md-6 offset-md-3">
+            <form action="save" method="POST">
+                <div class="form-group">
+                    <label for="nom">Nom</label>
+                    <input type="text" class="form-control" name="nom" required/>
+                    <label for="prenom">Prénom</label>
+                    <input type="text" class="form-control" name="prenom" required/>
+                    <label for="mobile">Numéro de téléphone</label>
+                    <input type="number" class="form-control" name="mobile" required/>
+                    <label for="status">Statut de la personne</label>
+                    <input type="checkbox" class="form-control" name="status" value="true">
+                    <div class="row mt-3 justify-content-around">
+                        <button type="submit" class="btn btn-primary" >Enregistrer</button>
+                        <button class="btn btn-danger">Reset Formulaire</button>
+                        <a href="/personnes" class="btn btn-info">Retour accueil</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+        integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+</body>
+</html>

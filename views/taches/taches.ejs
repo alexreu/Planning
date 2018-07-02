@@ -29,8 +29,8 @@
                     <td><%= element.nom %></td>
                     <td><%= element.commentaire %></td>
                     <td>
-                        <button class="btn btn-primary btn-block edit" data-toggle="modal" href="#update_modal" data-id= "<%= element._id%>" data-name="<%= element.nom %>" data-com="<%= element.commentaire%>" >Editer la tache</button>
-                        <a href="/taches/delete/<%= element._id %>" class="btn btn-danger btn-block">Supprimer la tache</a>
+                        <button class="btn btn-primary edit" data-toggle="modal" href="#update_modal" data-id= "<%= element._id%>" data-name="<%= element.nom %>" data-com="<%= element.commentaire%>" >Editer la tache</button>
+                        <a href="/taches/delete/<%= element._id %>" class="btn btn-danger">Supprimer la tache</a>
                     </td>
                 </tr>
                 <% }) %>
@@ -49,7 +49,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="tache/edit" method="post">
+                <form action="taches/edit" method="post">
                     <label for="update_task">Modifier la tâche</label>
                     <input type="text" class="form-control" id="update_task" name="update_task">
                     <textarea rows="" cols="" class="form-control" id="update_com" name="update_com"></textarea>

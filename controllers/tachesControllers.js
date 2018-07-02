@@ -10,7 +10,7 @@ tachesController.list = function(req,res){
         if (err){
             console.log('Error : ', err);
         }else{
-            res.render("../views/planning/taches", {taches:taches} );
+            res.render("../views/taches/taches", {taches:taches} );
         }
     });
 };
@@ -18,7 +18,7 @@ tachesController.list = function(req,res){
 
 //redirection à la page de creation de taches
 tachesController.creer = function(req, res){
-    res.render("../views/planning/addTache");
+    res.render("../views/taches/addTache");
 };
 
 
@@ -29,7 +29,7 @@ tachesController.save = function(req, res){
     tache.save(function(err){
         if(err){
             console.log(err);
-            res.render("../views/planning/addTache");
+            res.render("../views/taches/addTache");
         } else{
             console.log("creation tache OK");
             res.redirect("/tache");
@@ -49,7 +49,7 @@ tachesController.edit = function(req, res) {
         if (err) {
             console.log(err);
         } else {
-            res.redirect("/");
+            res.redirect("/taches");
         }
     });
 };

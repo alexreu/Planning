@@ -6,20 +6,19 @@ var utilisateur = require("../models/personnes");
 var utilisateursController = {};
 
 utilisateursController.create = function(req, res){
-    res.render("../views/planning/addPerson");
+    res.render("../views/personnes/addPerson");
 }; 
 
 //enregistrement des personnes
 utilisateursController.save = function(req, res){
     var personne = new utilisateur(req.body);
-
     personne.save(function(err){
         if(err){
             console.log(err);
-            res.render("../views/planning/addPerson");
+            res.render("../views/personnes/addPerson");
         } else{
             console.log("creation personne OK");
-            res.redirect("/personne");
+            res.redirect("/personnes");
         } 
     });
 };
@@ -30,7 +29,7 @@ utilisateursController.list = function(req, res) {
         if(err){
             console.log('Error : ', err);
         }else{
-            res.render("../views/planning/personne",{personnes:personnes} );
+            res.render("../views/personnes/personne",{personnes:personnes} );
         } 
     });
 };
@@ -38,17 +37,23 @@ utilisateursController.list = function(req, res) {
 //------------------------A faire
 //edition un utilisateur  par son id
 utilisateursController.edit = function(req, res) {
-    console.log(req.body.task_id);
-    taches.findOneAndUpdate(req.body.task_id, {
+    var id = req.body.person_id;
+    var name = req.body.update_name;
+    var surname = req.body.update_surname;
+    var number = req.body.update_number;
+    utilisateur.findByIdAndUpdate(id, {
         $set: {
-            nom: req.body.update_task,
-            commentaire: req.body.update_com
+            nom: name,
+            prenom: surname,
+            mobile: number,
+            //status: req.body.update_status
         }
-    }, function (err, taches) {
+    }, {new: true}, function (err, result) {
         if (err) {
             console.log(err);
         } else {
-            res.redirect("/tache");
+            console.log(result);
+            res.redirect("/personnes");
         }
     });
 };
@@ -56,15 +61,19 @@ utilisateursController.edit = function(req, res) {
 //------------------------A faire
 //fonction supprimer un utilisateur
 utilisateursController.delete = function(req, res){
-    var id= req.params.id;
-    taches.findOneAndDelete(id, function (err) {
+    var id = req.params.id;
+    var condition =
+    console.log(id);
+    utilisateur.findByIdAndRemove(id, function (err) {
         if(err){
-            console.log("error de suppression")
+            var test = "error: utilisateursController.delete";
+            //console.log(message);
+            res.redirect("/personnes");
         }else {
-            res.redirect("/taches");
+            res.redirect("/personnes");
         }
     })
-}
+};
 
 //export du module
 module.exports = utilisateursController;
