@@ -17,15 +17,21 @@
                 <form action="save" method="post">
                     <div class="form-group">
                         <label for="nom">Nom de la tache</label>
-                        <input type="text" name="nom" id="nom" class="form-control">
+                        <input type="text" name="nom" id="nom" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="commentaire">Votre commentaire</label>
-                        <textarea name="commentaire" id="commentaire" cols="30" rows="10" class="form-control"></textarea>
+                        <textarea name="commentaire" id="commentaire" cols="30" rows="10" class="form-control" required></textarea>
                     </div>
-                    <button class="btn btn-primary" type="submit">ajouter</button>
-                    <button class="btn btn-danger" type="reset">Reset Formulaire</button>
-                    <a href="/taches" class="btn btn-info">Retour accueil</a>
+                    <!--<div class="form-group">-->
+                        <!--<label for="status">Statut de la tâche</label>-->
+                        <!--<input type="checkbox" name="status">-->
+                    <!--</div>-->
+                    <div class="row justify-content-around">
+                        <button class="btn btn-primary" type="submit">ajouter</button>
+                        <button class="btn btn-danger" type="reset">Reset Formulaire</button>
+                        <a href="/taches" class="btn btn-info">Retour accueil</a>
+                    </div>
                 </form>
             </div>
         </section>

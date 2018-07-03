@@ -12,14 +12,14 @@ router.get("/creer", personne.create);
 
 //sauvegarder une personne
 router.post("/save", personne.save);
-
-//sauvegarder un legume. /!\ cest un POST
-router.post("/save", personne.save);
+//
+// //sauvegarder un legume. /!\ cest un POST
+// router.post("/save", personne.save);
 
 router.get("/delete/:id", personne.delete);
 
 
-//editer une tâche
+//editer une personne
 router.post("/edit", personne.edit);
 
 

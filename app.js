@@ -4,9 +4,6 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-//var indexRouter = require('./routes/index');
-//var usersRouter = require('./routes/users');
-
 var app = express();
 
 // Require Mongoose et connection à la bdd
@@ -26,14 +23,17 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-var tacheEffectuer = require('./routes/index');
-app.use('/', tacheEffectuer);
-//app.use('/users', usersRouter);
+// route qui affiche les  taches et les differentes actions possible
 var taches = require('./routes/taches');
 app.use('/taches', taches);
 
+// route qui affiches les personnes et les differentes actions possibles
 var personnes = require('./routes/personnes');
-app.use('/personne',personnes);
+app.use('/personnes',personnes);
+
+// route qui affiches les taches à effectuer avec les differentes actions possible
+var effectuer = require('./routes/effectuer');
+app.use('/effectuer', effectuer);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
