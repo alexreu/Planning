@@ -66,16 +66,20 @@
                             <% }) %>
                         </p>
                         <!--TODO modal edition de la tache a effectuer-->
-                        <button class="btn btn-primary">Editer</button>
-                        <a href="/effectuer/delete/<%= element._id %>" class="btn btn-primary bg-primary">X</a>
+                        <a href="effectuer/edit/<%= element._id %>" class="">Editer</a>
+                       
+
+                        <a href="effectuer/delete/<%= element._id %>" class="btn btn-primary bg-primary">X</a>
                     </div>
                 </div>
                 <% }) %>
             </div>
         </div>
+          
     </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script src="javascripts/effectuer.js"></script>
     </body>
 </html>
