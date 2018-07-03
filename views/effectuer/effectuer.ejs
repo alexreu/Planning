@@ -10,35 +10,14 @@
     <link rel="stylesheet" href="stylesheets/style.css" type="text/css">
 </head>
     <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
     <h1 class="text-uppercase text-center pb-5 pt-5">planning</h1>
     <section id="main">
         <div class="container-fluid d-flex text-center justify-content-center">
-            <form action="effectuer/creer" method="post">
+            <form action="/creer" method="post">
                 <div class="row justify-content-center">
                     <div class="col-md-2">
                         <label class="my-1 mr-2" for="id_tache">Taches</label>
                         <select class="custom-select my-1 mr-sm-2" id="id_tache" name="id_tache">
-
                         </select>
                     </div>
                     <div class="col-md-2">
@@ -68,12 +47,12 @@
                 <% data.forEach(function (element) { %>
                 <div class="card mb-5" style="width: 18rem;">
                     <div class="card-body text-center">
-                        <% element.id_tache.forEach(function (element) { %>
-                            <h5 class="card-title text-uppercase"><%= element.nom %></h5>
-                        <% })%>
+                        <h5 class="card-title">Taches A effectuer</h5>
                         <h6><b>Du:</b> <%= element.date_debut %> <b>Au:</b> <%= element.date_fin%></h6>
                         <p class="card-text">
                             <% element.id_tache.forEach(function (element) { %>
+                                <%= element.nom %>
+                                <br>
                                 <%= element.commentaire %>
                             <% }) %>
                         </p>
@@ -84,8 +63,8 @@
                             <% }) %>
                         </p>
                         <!--TODO modal edition de la tache a effectuer-->
-                        <button class="btn btn-primary">Editer</button>
-                        <a href="/effectuer/delete/<%= element._id %>" class="btn btn-primary bg-primary">X</a>
+                        <a href="edit/<%= element._id %>" class="">Editer</a>
+                        <a href="/delete/<%= element._id %>" class="btn btn-primary bg-primary">X</a>
                     </div>
                 </div>
                 <% }) %>
@@ -95,6 +74,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-    <script src="/effectuer/taches"></script>
+    <script src="javascripts/effectuer.js"></script>
+    <script src="/tache"></script>
     </body>
 </html>

@@ -1,7 +1,7 @@
 var element_liste = "";
 <% taches.forEach(function (element) { %>
     <% if(!element.affecte){%>
-        element_liste += "<option id='<%= element._id%>' value='<%= element._id%>'><%= element.nom %></option>";
+        element_liste += "<option id='<%= element._id%>' value='<%= element._id%>'><%= element.nom %><%= element.affecte %></option>";
     <% } %>
 <% }) %>
 $(function(){

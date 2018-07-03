@@ -3,7 +3,6 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
 var app = express();
 
 // Require Mongoose et connection à la bdd
@@ -33,7 +32,7 @@ app.use('/personnes',personnes);
 
 // route qui affiches les taches à effectuer avec les differentes actions possible
 var effectuer = require('./routes/effectuer');
-app.use('/effectuer', effectuer);
+app.use('/', effectuer);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
