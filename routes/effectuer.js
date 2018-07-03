@@ -21,6 +21,6 @@ router.get("/delete/:id", effectuer.del);
 // //editer une personne
 // router.post("/edit", personne.edit);
 
-
+router.get('/taches', effectuer.taches);
 
 module.exports = router;

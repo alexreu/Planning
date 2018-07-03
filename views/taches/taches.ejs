@@ -8,6 +8,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <title>Liste des taches</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
           integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
@@ -20,6 +21,7 @@
                 <tr>
                     <th scope="col">Taches</th>
                     <th scope="col">Comentaire</th>
+                    <th scope="col">Affectation</th>
                     <th scope="col">Actions</th>
                 </tr>
                 </thead>
@@ -28,6 +30,11 @@
                 <tr>
                     <td><%= element.nom %></td>
                     <td><%= element.commentaire %></td>
+                    <% if (element.affecte){ %>
+                        <td><i class="fas fa-check text-success"></i></td>
+                    <% }else { %>
+                        <td><i class="fas fa-times text-danger "></i></td>
+                    <% } %>
                     <td>
                         <button class="btn btn-primary edit" data-toggle="modal" href="#update_modal" data-id= "<%= element._id%>" data-name="<%= element.nom %>" data-com="<%= element.commentaire%>" >Editer la tache</button>
                         <a href="/taches/delete/<%= element._id %>" class="btn btn-danger">Supprimer la tache</a>
@@ -37,6 +44,7 @@
                 </tbody>
             </table>
             <a href="/taches/creer" class="btn btn-primary">Ajouter des taches</a>
+            <a href="/effectuer" class="btn btn-info">Retour à l'accueil</a>
         </div>
 
            <!-- Modal -->

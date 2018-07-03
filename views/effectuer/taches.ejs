@@ -1,0 +1,9 @@
+var element_liste = "";
+<% taches.forEach(function (element) { %>
+    <% if(!element.affecte){%>
+        element_liste += "<option id='<%= element._id%>' value='<%= element._id%>'><%= element.nom %></option>";
+    <% } %>
+<% }) %>
+$(function(){
+    $("#id_tache").html(element_liste);
+})

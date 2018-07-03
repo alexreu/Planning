@@ -3,6 +3,7 @@ var mongoose = require ('mongoose');
 var tachesSchema = new mongoose.Schema({
     nom: String,
     commentaire: String,
+    affecte: {type: Boolean, default: false},
 });
 
 module.exports = mongoose.model("taches", tachesSchema);

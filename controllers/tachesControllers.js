@@ -15,6 +15,21 @@ tachesController.list = function(req,res){
     });
 };
 
+tachesController.affecter = function(id){
+    console.log(id);
+    var myId = mongoose.Types.ObjectId(id);
+    taches.findByIdAndUpdate(myId, {
+        $set: {
+            affecte: true,
+        }
+    }, {new: true}, function (err) {
+            if (err){
+                console.log("error");
+            }
+        }
+    )
+};
+
 
 //redirection à la page de creation de taches
 tachesController.creer = function(req, res){
