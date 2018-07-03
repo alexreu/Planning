@@ -9,8 +9,7 @@ router.get('/', effectuer.list);
 //cree une tache à effectuer
 router.post("/creer", effectuer.add);
 //
-// //sauvegarder une personne
-// router.post("/save", personne.save);
+
 // //
 // // //sauvegarder un legume. /!\ cest un POST
 // // router.post("/save", personne.save);
@@ -18,8 +17,11 @@ router.post("/creer", effectuer.add);
 router.get("/delete/:id", effectuer.del);
 //
 //
-// //editer une personne
-// router.post("/edit", personne.edit);
+//editer une tâche à effectuer
+router.get("/edit/:id", effectuer.edit);
+
+// //sauvegarder une personne
+router.post("/save", effectuer.save);
 
 
 
