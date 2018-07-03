@@ -47,7 +47,9 @@
                 <% data.forEach(function (element) { %>
                 <div class="card mb-5" style="width: 18rem;">
                     <div class="card-body text-center">
-                        <h5 class="card-title">Taches A effectuer</h5>
+                        <% element.id_tache.forEach(function(element){%>
+                        <h5 class="card-title"><%= element.nom %></h5>
+                        <%})%>
                         <h6><b>Du:</b> <%= element.date_debut %> <b>Au:</b> <%= element.date_fin%></h6>
                         <p class="card-text">
                             <% element.id_tache.forEach(function (element) { %>
