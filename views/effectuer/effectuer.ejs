@@ -45,30 +45,33 @@
                 </div>
             </form>
         </div>
-        <div class="container pt-5">
-            <% data.forEach(function (element) { %>
-            <div class="alert alert-secondary" role="alert">
-                <div class="row align-items-center pr-5 pl-5">
-                    <span>
-                        <b>Du:</b> <%= element.date_debut %> <b>Au:</b> <%= element.date_fin%> /
-                        <% element.id_tache.forEach(function (element) { %>
-                            <%= element.nom %> --
-                            <%= element.commentaire %>
-                        <% }) %>
-                        /
-                        <% element.id_personne.forEach(function (element) { %>
-                            <%= element.prenom %> --
-                            <%= element.nom %>
-                        <% }) %>
-                    </span>
-                    <div class="ml-auto">
+        <div class="container pt-5" id="card-main">
+            <div class="row justify-content-around">
+                <% data.forEach(function (element) { %>
+                <div class="card mb-3" style="width: 18rem;">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Taches A effectuer</h5>
+                        <h6><b>Du:</b> <%= element.date_debut %> <b>Au:</b> <%= element.date_fin%></h6>
+                        <p class="card-text">
+                            <% element.id_tache.forEach(function (element) { %>
+                                <%= element.nom %>
+                                <br>
+                                <%= element.commentaire %>
+                            <% }) %>
+                        </p>
+                        <p class="card-text">
+                            <% element.id_personne.forEach(function (element) { %>
+                                <%= element.prenom %> --
+                                <%= element.nom %>
+                            <% }) %>
+                        </p>
                         <!--TODO modal edition de la tache a effectuer-->
                         <button class="btn btn-primary">Editer</button>
-                        <a href="/effectuer/delete/<%= element._id %>" class="btn btn-primary">X</a>
+                        <a href="/effectuer/delete/<%= element._id %>" class="btn btn-primary bg-primary">X</a>
                     </div>
                 </div>
+                <% }) %>
             </div>
-            <% }) %>
         </div>
     </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
