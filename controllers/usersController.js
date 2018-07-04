@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var user = require('../models/user');
 var bcrypt = require('bcrypt');
+var session = require('express-session');
 
 var userController = {};
 
@@ -66,6 +67,7 @@ userController.auth = function(req, res){
       if(!err && user){
           bcrypt.compare(password, user.password, function(err, result){
               if (result === true){
+                  req.session.userId = user._id;
                   res.redirect('/admin/index');
               }else {
                   res.redirect('/admin');
@@ -80,7 +82,7 @@ userController.auth = function(req, res){
 };
 
 // fonction qui permet de destroy la session pour logout
-userController.logOut = function(req, res, next){
+userController.logOut = function(req, res){
     console.log(req.session);
     if (req.session){
         // supprimer la session

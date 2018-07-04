@@ -8,7 +8,7 @@ function requireLogin (req, res, next) {
     }else {
         var err = new Error('error 404');
         err.status = 401;
-        next(err);
+        res.redirect('/admin');
     }
 };
 
