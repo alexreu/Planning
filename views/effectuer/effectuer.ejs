@@ -13,31 +13,32 @@
     <h1 class="text-uppercase text-center pb-5 pt-5">planning</h1>
     <section id="main">
         <div class="container-fluid d-flex text-center justify-content-center">
-            <form action="effectuer/creer" method="post">
+            <form action="/creer" method="post">
                 <div class="row justify-content-center">
                     <div class="col-md-2">
                         <label class="my-1 mr-2" for="id_tache">Taches</label>
-                        <select class="custom-select my-1 mr-sm-2" id="id_tache" name="id_tache">
-                            <% taches.forEach(function (element) { %>
-                            <option value="<%= element._id %>"><%= element.nom %></option>
-                            <% }) %>
+                        <select class="custom-select my-1 mr-sm-2" id="id_tache" name="id_tache" required>
                         </select>
                     </div>
                     <div class="col-md-2">
                         <label class="my-1 mr-2" for="id_personne">Personnes</label>
-                        <select class="custom-select my-1 mr-sm-2" id="id_personne" name="id_personne">
+                        <select class="custom-select my-1 mr-sm-2" id="id_personne" name="id_personne" required>
                             <% personnes.forEach(function(element){ %>
                             <option value="<%= element._id %>"><%= element.nom %> -- <%= element.prenom %></option>
                             <% });%>
                         </select>
                     </div>
                     <div class="col-md-2">
-                        <label for="id_tache">Debut</label>
-                        <input type="date" class="form-control" name="date_debut">
+                        <label for="id_tache">Date Debut</label>
+                        <input type="date" class="form-control" name="date_debut" required>
                     </div>
                     <div class="col-md-2">
-                        <label for="id_tache">Fin</label>
-                        <input type="date" class="form-control pr-3" name="date_fin">
+                        <label for="id_tache">Date Fin</label>
+                        <input type="date" class="form-control pr-3" name="date_fin" required>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="id_tache">Heure</label>
+                        <input type="time" class="form-control pr-3" name="hour" required>
                     </div>
                     <div class="col-md-2 d-flex justify-content-center mt-4 align-items-center">
                         <button class="btn btn-primary">Ajouter une tache</button>
@@ -48,26 +49,26 @@
         <div class="container pt-5" id="card-main">
             <div class="row justify-content-around">
                 <% data.forEach(function (element) { %>
-                <div class="card mb-3" style="width: 18rem;">
+                <div class="card mb-5" style="width: 18rem;">
                     <div class="card-body text-center">
-                        <h5 class="card-title">Taches A effectuer</h5>
+                        <% element.id_tache.forEach(function(element){%>
+                        <h5 class="card-title"><%= element.nom %></h5>
+                        <%})%>
                         <h6><b>Du:</b> <%= element.date_debut %> <b>Au:</b> <%= element.date_fin%></h6>
+                        <h6><b>A :</b> <%= element.hour %> </h6>
                         <p class="card-text">
                             <% element.id_tache.forEach(function (element) { %>
-                                <%= element.nom %>
-                                <br>
-                                <%= element.commentaire %>
+                        <h6><b>Commentaire</b> : <%= element.commentaire %></h6>
                             <% }) %>
                         </p>
                         <p class="card-text">
                             <% element.id_personne.forEach(function (element) { %>
-                                <%= element.prenom %> --
-                                <%= element.nom %>
+                        <h6><b>Attribuée à</b>  : <%= element.prenom %>  <%= element.nom %></h6>
                             <% }) %>
                         </p>
                         <!--TODO modal edition de la tache a effectuer-->
-                        <button class="btn btn-primary">Editer</button>
-                        <a href="/effectuer/delete/<%= element._id %>" class="btn btn-primary bg-primary">X</a>
+                        <a href="edit/<%= element._id %>" class="btn btn-info bg-info">Editer</a>
+                        <a href="/delete/<%= element._id %>" class="btn btn-primary bg-primary">X</a>
                     </div>
                 </div>
                 <% }) %>
@@ -77,5 +78,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script src="javascripts/effectuer.js"></script>
+    <script src="/tache"></script>
     </body>
 </html>
