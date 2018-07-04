@@ -67,7 +67,7 @@
                             <% }) %>
                         </p>
                         <!--TODO modal edition de la tache a effectuer-->
-                        <a href="edit/<%= element._id %>" class="btn btn-info bg-info">Editer</a>
+                        <a href="#update_toDo" data-toggle="modal" class="btn btn-info bg-info" data-id="<%=element._id%>" data-debut="<%=element.date_debut%>" data-fin="<%=element.date_fin%>"data-hour="<%=element.hour%>">Editer</a>
                         <a href="/delete/<%= element._id %>" class="btn btn-primary bg-primary">X</a>
                     </div>
                 </div>
@@ -75,10 +75,47 @@
             </div>
         </div>
     </section>
+    <!-- Modal -->
+    <div class="modal fade" id="update_toDo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Mise à jour</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="/edit" method="post">
+                        <div class="form-group">
+                            <label for="update_task">Date de début :</label>
+                            <input type="date" class="form-control" id="date_debut" name="date_debut" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="update_task">Date de fin :</label>
+                            <input type="date" class="form-control" id="date_fin" name="date_fin" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="update_task">Heure :</label>
+                            <input type="time" class="form-control" id="hour" name="hour" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" id="_id" value="" name="_id">
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="update_button">Mettre à jour</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     <script src="javascripts/effectuer.js"></script>
     <script src="/tache"></script>
+    <script src="/javascripts/effectuer.js"></script>
     </body>
 </html>
