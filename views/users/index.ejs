@@ -10,8 +10,14 @@
           integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 </head>
 <body>
-    <h1>Welcome To My world</h1>
-    <a href="/admin/logout">logout</a>
+    <h1 class="text-center py-5">Bienvenue dans l'administration</h1>
+    <section class="container">
+        <div class="row justify-content-around">
+            <a href="/admin/logout" class="btn btn-info">Déconnexion</a>
+            <a href="/taches" class="btn btn-info">Gestion des Taches</a>
+            <a href="/personnes" class="btn btn-info">Gestion Personnes</a>
+        </div>
+    </section>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
