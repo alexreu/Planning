@@ -12,10 +12,8 @@ router.post("/creer", effectuer.add);
 router.get("/delete/:id", effectuer.del);
 
 //editer une tâche à effectuer
-router.get("/edit/:id", effectuer.edit);
+router.post("/edit", effectuer.edit);
 
-// //sauvegarder une personne
-router.post("/save", effectuer.save);
 
 router.get('/tache', effectuer.taches);
 

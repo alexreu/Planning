@@ -81,53 +81,35 @@ effectuerController.create = function(req, res){
     //console.log('effectuerController.create');
     res.render("../views/effectuer/edit");
 }
-//edition d'un legume par son id
+//edition d'une tache à effectuer par son id
 effectuerController.edit = function(req, res){
-    // var legume = new Legume(req.body);
-    var id = req.params.id // permet de récupérer les données d'un Effectuer
-    //console.log(id);
-    effectuer.findById(id).
-    populate('id_tache').
-    populate('id_personne').
-    exec(function(err, effectuer){
+    var id = req.body._id; // permet de récupérer les données d'un Effectuer
+    var date_debut = req.body.date_debut;
+    var date_fin = req.body.date_fin;
+    var hour = req.body.hour;
+    console.log(id);
+    console.log(date_debut);
+    console.log(date_fin);
+    console.log(hour);
+    effectuer.findByIdAndUpdate(id,
+        {
+        $set: {
+            date_debut: date_debut,
+            date_fin: date_fin,
+            hour: hour
+        }
+    }, function(err){
+    
         if(err){
             console.log("Error ", err);
         } else{
             //console.log(effectuer);
             //  renvoi vers une route
-            res.render("../views/effectuer/edit",{
-                effectuer : effectuer   // si fonctionne renvoit la vue avec les élements de légumes préremplis
-
-            } );
+            res.redirect("/")
         }
     });
 };
 
-
-
-//edition d'une tâche à effectuer par son id
-effectuerController.save = function(req, res) {
-    var id = req.body.effectuer_id;
-    var name = req.body.nomT;
-
-    effectuer.findByIdAndUpdate(id,
-        {
-        $set: {
-            id_tache:{'nom': name, 'commentaire': com  },
-            id_personne:{'nom': nom, 'prenom': prenom },
-        }
-    })
-    .populate('id_tache')
-    .populate('id_personne')
-    .exec(function (err) {
-        console.log("avant le if")
-        if (err) {
-            console.log("error => " + err);
-        } else {
-            res.redirect('/');
-        }
-    });
-};
 
 // fonction suppression tache à effectuer
 effectuerController.del = function(req, res){
