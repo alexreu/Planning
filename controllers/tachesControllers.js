@@ -55,7 +55,7 @@ tachesController.save = function(req, res){
 //edition une tâche  par son id
 tachesController.edit = function(req, res) {
     console.log(req.body.task_id);
-    taches.findOneAndUpdate(req.body.task_id, {
+    taches.findByIdAndUpdate(req.body.task_id, {
         $set: {
             nom: req.body.update_task,
             commentaire: req.body.update_com
