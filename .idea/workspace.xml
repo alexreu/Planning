@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1acdca19-9d01-4345-8079-062a191a4d9c" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/models/effectuer.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/effectuer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/effectuer/effectuer.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/effectuer/effectuer.ejs" afterDir="false" />
-    </list>
+    <list default="true" id="1acdca19-9d01-4345-8079-062a191a4d9c" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -17,10 +14,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="effectuer.ejs" pinned="false" current-in-tab="true">
+      <file leaf-file-name="tacheAEffectuer.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/controllers/tacheAEffectuer.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="370">
+              <caret line="29" selection-start-line="29" selection-end-line="29" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="effectuer.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/effectuer/effectuer.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
+            <state relative-caret-position="504">
               <caret line="40" column="90" lean-forward="true" selection-start-line="40" selection-start-column="90" selection-end-line="40" selection-end-column="90" />
             </state>
           </provider>
@@ -29,7 +38,7 @@
       <file leaf-file-name="effectuer.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/effectuer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="532">
+            <state relative-caret-position="364">
               <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
             </state>
           </provider>
@@ -67,6 +76,15 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="504">
               <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="taches.ejs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/taches/taches.ejs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="258">
+              <caret line="41" column="22" selection-start-line="41" selection-start-column="22" selection-end-line="41" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -109,7 +127,6 @@
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/controllers/effectuerController.js" />
         <option value="$PROJECT_DIR$/routes/effectuer.js" />
-        <option value="$PROJECT_DIR$/views/taches/taches.ejs" />
         <option value="$PROJECT_DIR$/views/personnes/personne.ejs" />
         <option value="$PROJECT_DIR$/models/user.js" />
         <option value="$PROJECT_DIR$/controllers/tachesControllers.js" />
@@ -117,6 +134,7 @@
         <option value="$PROJECT_DIR$/views/personnes/addPerson.ejs" />
         <option value="$PROJECT_DIR$/models/effectuer.js" />
         <option value="$PROJECT_DIR$/views/effectuer/effectuer.ejs" />
+        <option value="$PROJECT_DIR$/views/taches/taches.ejs" />
       </list>
     </option>
   </component>
@@ -256,25 +274,24 @@
       <workItem from="1530545189282" duration="3555000" />
       <workItem from="1530550297187" duration="413000" />
       <workItem from="1530550798444" duration="6275000" />
-      <workItem from="1530675293781" duration="4306000" />
+      <workItem from="1530675293781" duration="4589000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="107669000" />
+    <option name="totallyTimeSpent" value="107952000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-2" y="25" width="1924" height="1033" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18697916" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18697916" />
       <window_info anchor="bottom" id="TODO" order="13" />
       <window_info anchor="bottom" id="Docker" order="14" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="16" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="15" />
       <window_info anchor="bottom" id="Run" order="4" weight="0.32962668" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="17" visible="true" weight="0.272" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="17" visible="true" weight="0.272" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="5" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -470,16 +487,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/tacheAEffectuer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="812">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bin/www">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="392">
@@ -494,13 +501,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/effectuer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/effectuerController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="448">
@@ -512,13 +512,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="370">
           <caret line="23" column="119" selection-start-line="23" selection-start-column="119" selection-end-line="23" selection-end-column="119" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/taches/taches.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1596">
-          <caret line="57" column="116" selection-start-line="57" selection-start-column="116" selection-end-line="57" selection-end-column="116" />
         </state>
       </provider>
     </entry>
@@ -567,10 +560,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/routes/effectuer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/effectuer/effectuer.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
+        <state relative-caret-position="504">
           <caret line="40" column="90" lean-forward="true" selection-start-line="40" selection-start-column="90" selection-end-line="40" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/taches/taches.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="41" column="22" selection-start-line="41" selection-start-column="22" selection-end-line="41" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/tacheAEffectuer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="370">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -55,6 +55,7 @@
                         <h5 class="card-title"><%= element.nom %></h5>
                         <%})%>
                         <h6><b>Du:</b> <%= element.date_debut %> <b>Au:</b> <%= element.date_fin%></h6>
+                        <h6><b>A :</b> <%= element.hour %> </h6>
                         <p class="card-text">
                             <% element.id_tache.forEach(function (element) { %>
                         <h6><b>Commentaire</b> : <%= element.commentaire %></h6>
