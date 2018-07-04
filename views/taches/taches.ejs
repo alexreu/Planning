@@ -1,33 +1,35 @@
-<!--vue pour lister les taches -->
-
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <title>Liste des taches</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
-          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 </head>
     <body>
         <div class="container">
             <h1 class="text-center pt-5 pb-5">Liste Des Taches</h1>
             <table class="table">
                 <thead>
-                <tr>
-                    <th scope="col">Taches</th>
-                    <th scope="col">Comentaire</th>
-                    <th scope="col">Actions</th>
-                </tr>
+                    <tr>
+                        <th scope="col">Taches</th>
+                        <th scope="col">Comentaire</th>
+                        <th scope="col">Affectation</th>
+                        <th scope="col">Actions</th>
+                    </tr>
                 </thead>
                 <tbody>
                 <% taches.forEach(function (element) { %>
                 <tr>
                     <td><%= element.nom %></td>
                     <td><%= element.commentaire %></td>
+                    <% if (element.affecte){ %>
+                        <td><i class="fas fa-check text-success"></i></td>
+                    <% }else { %>
+                        <td><i class="fas fa-times text-danger "></i></td>
+                    <% } %>
                     <td>
                         <button class="btn btn-primary edit" data-toggle="modal" href="#update_modal" data-id= "<%= element._id%>" data-name="<%= element.nom %>" data-com="<%= element.commentaire%>" >Editer la tache</button>
                         <a href="/taches/delete/<%= element._id %>" class="btn btn-danger">Supprimer la tache</a>
@@ -37,37 +39,40 @@
                 </tbody>
             </table>
             <a href="/taches/creer" class="btn btn-primary">Ajouter des taches</a>
+            <a href="/admin/index" class="btn btn-info">Retour à l'accueil</a>
         </div>
-
-           <!-- Modal -->
-    <div class="modal fade" id="update_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="taches/edit" method="post">
-                    <label for="update_task">Modifier la tâche</label>
-                    <input type="text" class="form-control" id="update_task" name="update_task">
-                    <textarea rows="" cols="" class="form-control" id="update_com" name="update_com"></textarea>
-                    <input type="hidden" class="form-control" id="task_id" value="" name="task_id">
-                    <button type="submit" class="btn btn-primary" id="update_button">Mise a jour</button>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
+       <!-- Modal -->
+        <div class="modal fade" id="update_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Mise a jour des taches</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="taches/edit" method="post">
+                            <div class="form-group">
+                                <label for="update_task">Modifier la tâche</label>
+                                <input type="text" class="form-control" id="update_task" name="update_task" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea rows="15" cols="" class="form-control" id="update_com" name="update_com" required></textarea>
+                                <input type="hidden" class="form-control" id="task_id" value="" name="task_id">
+                            </div>
+                            <button type="submit" class="btn btn-primary" id="update_button">Mise a jour</button>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-        <script src="javascripts/taches.js">
-        </script>
+        <script src="javascripts/taches.js"></script>
     </body>
 </html>

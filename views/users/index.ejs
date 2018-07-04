@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Accueil - Admin</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+</head>
+<body>
+    <h1 class="text-center py-5">Bienvenue dans l'administration</h1>
+    <h6 class="text-center">Utilisateur : <%= username %></h6>
+    <h6 class="text-center">Date du jour : <%= date %></h6>
+    <section class="container py-5">
+        <% if(success) {%>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <span><%= success %></span>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <% } %>
+        <div class="row justify-content-around">
+            <a href="/admin/logout" class="btn btn-info">Déconnexion</a>
+            <a href="/taches" class="btn btn-info">Gestion des Taches</a>
+            <a href="/personnes" class="btn btn-info">Gestion Personnes</a>
+            <a href="/admin/addUser" class="btn btn-info">Ajouter un administrateur</a>
+        </div>
+    </section>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+        integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+</body>
+</html>

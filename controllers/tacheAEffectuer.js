@@ -27,6 +27,7 @@ tachesAEffectuerController.add = function(req, res){
         if(err){
             console.log("error");
         }else {
+
             res.redirect("/");
         }
     })

@@ -1,17 +1,20 @@
+var mongoose = require('mongoose');
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
 var app = express();
+var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
 
 // Require Mongoose et connection à la bdd
-var mongoose = require('mongoose');
-var url = "mongodb://localhost/planning";
-mongoose.Promise = global.Promise;
-mongoose.connect(url)
+mongoose.connect("mongodb://localhost/planning")
     .then (() => console.log('Connexion BDD OK'));
+
+var db = mongoose.connection;
+
+mongoose.Promise = global.Promise;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -22,6 +25,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+// utilisation des sessions
+app.use(session({
+    // secret concat avec le password pour + de sécuriter
+    secret: 'work hard',
+    resave: true,
+    saveUninitialized: false,
+    store: new MongoStore({
+        mongooseConnection: db
+    })
+}));
 
 // route qui affiche les  taches et les differentes actions possible
 var taches = require('./routes/taches');
@@ -33,7 +46,11 @@ app.use('/personnes',personnes);
 
 // route qui affiches les taches à effectuer avec les differentes actions possible
 var effectuer = require('./routes/effectuer');
-app.use('/effectuer', effectuer);
+app.use('/', effectuer);
+
+// route qui affiche le backoffice /!\ uniquement pour les admin
+var users = require('./routes/user');
+app.use('/admin', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

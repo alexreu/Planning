@@ -22,7 +22,6 @@
                 <th scope="col">nom</th>
                 <th scope="col">prenom</th>
                 <th scope="col">numero</th>
-                <th scope="col">Activer</th>
                 <th scope="col">Actions</th>
             </tr>
             </thead>
@@ -33,15 +32,6 @@
                 <td><%= element.prenom%></td>
                 <td><%= element.mobile%></td>
                 <td>
-                    <div class="form-check">
-                        <% if (element.status){ %>
-                        <input class="form-check-input" disabled type="checkbox" value="" checked id="">
-                        <% }else{ %>
-                        <input class="form-check-input" disabled type="checkbox" value="" id="">
-                        <% } %>
-                    </div>
-                </td>
-                <td>
                     <button type="button" data-toggle="modal" data-target="#editModal" class="btn btn-primary" data-nom="<%= element.nom%>" data-prenom="<%= element.prenom%>" data-numero="<%= element.mobile%>" data-statut="<%= element.status%>" data-id="<%= element._id%>">Editer</button>
                     <a href="personnes/delete/<%= element._id %>" class="btn btn-danger text-white">Supprimer</a>
                 </td>
@@ -50,6 +40,7 @@
             </tbody>
         </table>
         <a href="personnes/creer" class="btn btn-primary">Ajout personnes</a>
+        <a href="/admin/index" class="btn btn-info">Accueil</a>
     </section>
 
     <!-- Modal -->
@@ -66,16 +57,18 @@
                     <form action="personnes/edit" method="post">
                         <div class="form-group">
                             <label for="nom">Nom</label>
-                                <input type="text" class="form-control" id="nom" name="update_name">
-                            <label for="prenom">Prénom</label>
-                                <input type="text" class="form-control" id="prenom" name="update_surname" required>
-                            <label for="mobile">Numero de mobile</label>
-                                <input type="number"  class="form-control" id="mobile" name="update_number">
-                            <label for="status">Statut ( à décocher pour desactiver une personne )</label>
-                                <input class="form-control" type="checkbox" value="" id="status" name="update_status" required>
-                                <input type="hidden" id="person_id" name="person_id" required>
-                            <button type="submit" class="btn btn-primary">Mise à jour</button>
+                            <input type="text" class="form-control" id="nom" name="update_name" required>
                         </div>
+                        <div class="form-group">
+                            <label for="prenom">Prénom</label>
+                            <input type="text" class="form-control" id="prenom" name="update_surname" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="mobile">Numero de mobile</label>
+                            <input type="number"  class="form-control" id="mobile" name="update_number" required>
+                            <input type="hidden" id="person_id" name="person_id" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Mise à jour</button>
                     </form>
                 </div>
                 <div class="modal-footer">
