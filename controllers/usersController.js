@@ -12,7 +12,7 @@ userController.ajout = function(req, res){
 
 // fonction qui fait un rendu sur la page index
 userController.index = function(req, res){
-    res.render('../views/users/index');
+    res.render('../views/users/index', {username: req.session.userName});
 };
 
 // hash du password avant l'ajout en bdd
@@ -68,6 +68,8 @@ userController.auth = function(req, res){
           bcrypt.compare(password, user.password, function(err, result){
               if (result === true){
                   req.session.userId = user._id;
+                  req.session.userName = user.username;
+                  //console.log(req.session.userName);
                   res.redirect('/admin/index');
               }else {
                   res.redirect('/admin');
