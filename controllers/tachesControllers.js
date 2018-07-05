@@ -5,23 +5,18 @@ var taches = require('../models/taches');
 /*controller pour les taches */
 var tachesController = {};
 
-//redirection à la page de creation de taches
-tachesController.creer = function(req, res){
-    res.render("../views/taches/addTache",{ error: req.session.error});
-};
-
-
+//fonction qui permet d'afficher la liste des tâches
 tachesController.list = function(req,res){
     taches.find({}).exec(function (err, taches) {
         if (err){
             console.log('Error : ', err);
         }else{
-            res.render("../views/taches/taches", {taches:taches, success: req.session.success} );
-
+            res.render("../views/taches/taches", {taches:taches, success:req.session.success} );
         }
     });
 };
 
+//fonction qui permet de gérer le statut d'affectation de la tâche (booléen)
 tachesController.affecter = function(id){
     console.log(id);
     var myId = mongoose.Types.ObjectId(id);
@@ -37,9 +32,12 @@ tachesController.affecter = function(id){
     )
 };
 
+//redirection à la page de creation de taches 
+tachesController.creer = function(req, res){     
+    res.render("../views/taches/addTache",{ error: req.session.error}); 
+};
 
-
-//enregistrement des taches 
+//fonction qui enregistre une tache
 tachesController.save = function(req, res){
     var tache = new taches(req.body);
 
@@ -47,7 +45,7 @@ tachesController.save = function(req, res){
         if(err){
             req.session.error = 'Echec de la création de la tâche';
             console.log(err);
-            res.redirect("/taches");
+            res.redirect("/taches/creer");
         } else{
             console.log("creation tache OK");
             req.session.success = 'Tâche créée';
@@ -56,7 +54,7 @@ tachesController.save = function(req, res){
     });
 };
 
-//edition une tâche  par son id
+//edition d'une tâche  par son id
 tachesController.edit = function(req, res) {
     console.log(req.body.task_id);
     taches.findByIdAndUpdate(req.body.task_id, {
