@@ -6,36 +6,61 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login - Admin</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
-          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 </head>
 <body>
     <h1 class="text-center py-5">Connexion</h1>
     <section class="container">
         <% if(error){ %>
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <span><%= error %></span>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
+        <script>
+            var error = true;
+        </script>
         <% } %>
         <form action="/admin/login" method="post">
             <div class="form-group">
-                <label for="">Nom d'utilisateur</label>
-                <input class="form-control" type="text" id="username" name="username" required>
+                <div class="col-md-8 offset-md-2">
+                    <label for="">Nom d'utilisateur</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fas fa-user"></i></div>
+                        </div>
+                        <input class="form-control" type="text" id="username" name="username" required>
+                    </div>
+                </div>
             </div>
             <div class="form-group">
-                <label for="">Mot de passe</label>
-                <input class="form-control" type="password" id="password" name="password" required>
+                <div class="col-md-8 offset-md-2">
+                    <label for="">Mot de passe</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fas fa-key"></i></div>
+                        </div>
+                        <input class="form-control" type="password" id="password" name="password" required>
+                    </div>
+                </div>
             </div>
-            <button type="submit" class="btn btn-primary">Connexion</button>
-            <a href="/" class="btn btn-info bg-info">Retour accueil</a>
+            <div class="col-md-8 offset-md-2">
+                <button type="submit" class="btn btn-primary">Connexion</button>
+                <a href="/" class="btn btn-info bg-info">Retour accueil</a>
+            </div>
         </form>
     </section>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
-        integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script src="javascripts/bootstrap-notify.js"></script>
+    <script>
+        if(error){
+
+            $.notify({
+                // options
+                message: 'Erreur de mot de passe'
+            },{
+                // settings
+                type: 'danger'
+            });
+        }
+    </script>
 </body>
 </html>
