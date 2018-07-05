@@ -1,3 +1,6 @@
+//quelles technos? pourquoi? 
+//Node JS car seul langage pour coder le back end en javascript
+
 /*controller pour les utilisateurs */
 var mongoose = require('mongoose');
 
@@ -5,12 +8,12 @@ var utilisateur = require("../models/personnes");
 
 var utilisateursController = {};
 
+// Fonction  qui permet de renvoyer vers le formulaire de création d'un utilisateur
 utilisateursController.create = function(req, res){
-    var err = 
     res.render("../views/personnes/addPerson", {error: req.session.error});
 }; 
 
-//enregistrement des personnes
+//fonction qui permet l'enregistrement de nouveax utilisateurs
 utilisateursController.save = function(req, res){
 
     var personne = new utilisateur(req.body);
@@ -29,7 +32,7 @@ utilisateursController.save = function(req, res){
     });
 };
 
-// //Liste les utilisateurs
+// Fonction qui permet d'afficher la liste les utilisateurs
 utilisateursController.list = function(req, res) {
     utilisateur.find({}).exec(function(err, personnes){
         if(err){
@@ -41,13 +44,14 @@ utilisateursController.list = function(req, res) {
     });
 };
 
-//------------------------A faire
-//edition un utilisateur  par son id
+
+// Fonction qui permet l'edition un utilisateur identifié par son ID
 utilisateursController.edit = function(req, res) {
-    var id = req.body.person_id;
-    var name = req.body.update_name;
-    var surname = req.body.update_surname;
-    var number = req.body.update_number;
+        //déclaration des variables que l'on veut éditer
+        var id = req.body.person_id;// permet de récupérer les données d'une personne pour pouvoir modifier les champs du body (les 3 suivants)
+        var name = req.body.update_name;
+        var surname = req.body.update_surname;
+        var number = req.body.update_number;
     utilisateur.findByIdAndUpdate(id, {
         $set: {
             nom: name,
@@ -67,11 +71,12 @@ utilisateursController.edit = function(req, res) {
     });
 };
 
-//fonction supprimer un utilisateur
+//Fonction  qui permet de supprimer un utilisateur identifié par son ID
 utilisateursController.delete = function(req, res){
-    var id = req.params.id;
-    var condition =
-    console.log(id);
+        //"params" permet de passer l'id en paramètre dans l'url pour aller chercher l'élément à supprimer
+        var id = req.params.id;
+        var condition =
+        console.log(id);
     utilisateur.findByIdAndRemove(id, function (err) {
         if(err){
             var test = "error: utilisateursController.delete";
@@ -85,7 +90,7 @@ utilisateursController.delete = function(req, res){
     })
 };
 
-//export du module
+// module qui permet d'exporter le Controller utilisateur
 module.exports = utilisateursController;
 
 
