@@ -5,9 +5,18 @@ var router = express.Router();
 // appel tachesController
 var taches = require("../controllers/tachesControllers");
 
+function requireLogin (req, res, next) {
+    if (req.session && req.session.userId) {
+        next();
+    }else {
+        var err = new Error('error 404');
+        err.status = 401;
+        res.redirect('/admin');
+    }
+};
 
 // route pour lister les taches
-router.get('/', taches.list);
+router.get('/', requireLogin, taches.list);
 
 // route pour créer une tache
 router.get ('/creer', taches.creer);

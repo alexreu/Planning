@@ -4,8 +4,18 @@ var router = express.Router();
 
 var personne = require("../controllers/utilisateursController");
 
+function requireLogin (req, res, next) {
+    if (req.session && req.session.userId) {
+        next();
+    }else {
+        var err = new Error('error 404');
+        err.status = 401;
+        res.redirect('/admin');
+    }
+};
+
 /* GET home page. */
-router.get('/', personne.list );
+router.get('/', requireLogin, personne.list );
 
 //cree une personne
 router.get("/creer", personne.create);
