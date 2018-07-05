@@ -41,7 +41,6 @@ personnesList.exec(function (err, personnes) {
 });
 
 // recuperation des taches pour l'inclure dans la liste déroulante
-
 effectuerController.taches = function(req, res){
     var tachesList = taches.find({})
     tachesList.exec(function (err, taches) {
