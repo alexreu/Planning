@@ -24,8 +24,8 @@ router.get ('/creer', taches.creer);
 //sauvegarder un legume. /!\ cest un POST
 router.post("/save", taches.save);
 
+//desactiver un enregistrement 
 router.get("/delete/:id", taches.delete);
-
 
 //editer une tâche
 router.post("/edit", taches.edit);
