@@ -10,7 +10,7 @@ tachesController.list = function(req,res){
         if (err){
             console.log('Error : ', err);
         }else{
-            res.render("../views/taches/taches", {taches:taches} );
+            res.render("../views/taches/taches", {taches:taches, success:req.session.success} );
         }
     });
 };
@@ -33,7 +33,7 @@ tachesController.affecter = function(id){
 
 //redirection à la page de creation de taches
 tachesController.creer = function(req, res){
-    res.render("../views/taches/addTache");
+    res.render("../views/taches/addTache",{ error: req.session.error});
 };
 
 
@@ -43,10 +43,12 @@ tachesController.save = function(req, res){
 
     tache.save(function(err){
         if(err){
+            req.session.error = 'Echec de la création de la tâche';
             console.log(err);
             res.render("../views/taches/addTache");
         } else{
             console.log("creation tache OK");
+            req.session.success = 'Tâche créée';
             res.redirect("/taches");
         } 
     });
@@ -62,8 +64,10 @@ tachesController.edit = function(req, res) {
         }
     }, function (err, taches) {
         if (err) {
+            req.session.error = "Echec de la mise à jour";
             console.log(err);
         } else {
+            req.session.success = "Tâche mise à jour";
             res.redirect("/taches");
         }
     });
@@ -76,6 +80,7 @@ tachesController.delete = function(req, res){
         if(err){
             console.log("error de suppression")
         }else {
+            req.session.success = "Tâche supprimée";
             res.redirect("/taches");
         }
     })
