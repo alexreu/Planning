@@ -1,5 +1,8 @@
-var mongoose = require('mongoose');
+//quelles technos? pourquoi? 
+//Node JS car seul langage pour coder le back end en javascript
 
+
+var mongoose = require('mongoose');
 var effectuer = require("../models/effectuer");
 var taches = require("../models/taches");
 var personnes = require("../models/personnes");
@@ -10,7 +13,7 @@ var effectuerController = {};
 var personnesList;
 var tachesList;
 
-// fonction permettant de liste toutes les taches avec le nom des personnes qui l'effectue
+// fonction permettant de lister toutes les taches avec le nom des personnes qui l'effectuent (populate permet de faire la jointure)
 effectuerController.list = function(req, res){
     effectuer.find({}).
     populate('id_tache').
@@ -27,7 +30,7 @@ effectuerController.list = function(req, res){
     })
 };
 
-// récuperation de la liste des personnes pour la liste déroulante
+// récuperation de la liste des personnes pour l'inclure dans la liste déroulante
 var personnesList = personnes.find({})
 personnesList.exec(function (err, personnes) {
     if(err){
@@ -37,7 +40,7 @@ personnesList.exec(function (err, personnes) {
     }
 });
 
-// recuperation des taches pour la liste déroulante
+// recuperation des taches pour l'inclure dans la liste déroulante
 
 effectuerController.taches = function(req, res){
     var tachesList = taches.find({})
@@ -69,7 +72,7 @@ effectuerController.add = function(req, res){
             console.log("error")
         }else {
             console.log("ajout réussi");
-            //taches affecter
+            //appel de la fonction qui permet de gérer le statut d'affectation de la tâche (booléen)
             tache.affecter(tacheEffectuer.id_tache[0]);
             res.redirect('/');
         }
@@ -77,20 +80,14 @@ effectuerController.add = function(req, res){
 };
 
 
-effectuerController.create = function(req, res){
-    //console.log('effectuerController.create');
-    res.render("../views/effectuer/edit");
-}
-//edition d'une tache à effectuer par son id
+//fonction d'edition d'une tache à effectuer par l'id
 effectuerController.edit = function(req, res){
-    var id = req.body._id; // permet de récupérer les données d'un Effectuer
+    //déclaration des variables que l'on veut éditer
+    var id = req.body._id; // permet de récupérer les données d'un Effectuer pour pouvoir modifier les champs du body (les 3 suivants)
     var date_debut = req.body.date_debut;
     var date_fin = req.body.date_fin;
     var hour = req.body.hour;
-    console.log(id);
-    console.log(date_debut);
-    console.log(date_fin);
-    console.log(hour);
+    
     effectuer.findByIdAndUpdate(id,
         {
         $set: {
@@ -111,14 +108,16 @@ effectuerController.edit = function(req, res){
 };
 
 
-// fonction suppression tache à effectuer
+// fonction de suppression de la tache à effectuer
 effectuerController.del = function(req, res){
+    //"params" permet de passer l'id en paramètre dans l'url pour aller chercher l'élément à supprimer
     var id = req.params.id;
     console.log(id);
     effectuer.findByIdAndDelete(id, function (err) {
         if(err){
             console.log("erreur lors de la suppression");
         }else {
+            //envoie des consignes à interpréter au navigateur 
             res.header("Cache-Control", "private no-cache no-store must-revalidate");
             res.redirect('/');
         }
