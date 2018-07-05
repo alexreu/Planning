@@ -30,10 +30,11 @@
     <h6 class="text-center">Utilisateur : <%= username %></h6>
     <h6 class="text-center">Date du jour : <%= date %></h6>
     <section class="container py-5">
-        <% if(success) {%>
-        <script>
-            var success = true;
-        </script>
+        <% if(success.info) {%>
+        <!--<script>-->
+            <!--var success = true;-->
+        <!--</script>-->
+        <%= success.info %>
         <% } %>
         <div class="row justify-content-around">
             <a href="/admin/logout" class="btn btn-info">Déconnexion</a>
@@ -46,39 +47,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     <script src="../javascripts/bootstrap-notify.js"></script>
-    <script>
-        if(success){
-            $.notify({
-                // options
-                message: 'Connexion réussi'
-            },{
-                // settings
-                position: null,
-                type: 'success',
-                allow_dismiss: true,
-                placement: {
-                    from: "top",
-                    align: "center"
-                },
-                z_index: 1031,
-                delay: 0,
-                timer: 500,
-                animate: {
-                    enter: 'animated fadeInDown',
-                    exit: 'animated fadeOutUp'
-                },
-                onShow: null,
-                onShown: null,
-                onClose: null,
-                onClosed: null,
-                template: '<div data-notify="container" class="col-xs-11 col-sm-3 alert alert-{0}" role="alert">' +
-                    '<button type="button" aria-hidden="true" class="close" data-notify="dismiss">x</button>' +
-                    '<span data-notify="icon"></span> ' +
-                    '<span data-notify="title">{1}</span> ' +
-                    '<span data-notify="message">{2}</span>' +
-                '</div>'
-            });
-        }
-    </script>
+    <!--<script>-->
+        <!--if(success){-->
+            <!--$.notify({-->
+                <!--// options-->
+                <!--message: 'Connexion réussie'-->
+            <!--},{-->
+                <!--// settings-->
+                <!--type: 'success',-->
+                <!--placement: {-->
+                    <!--from: "top",-->
+                    <!--align: "center"-->
+                <!--}-->
+            <!--});-->
+        <!--}-->
+    <!--</script>-->
 </body>
 </html>

@@ -21,7 +21,7 @@ router.get('/', requireLogin, taches.list);
 // route pour créer une tache
 router.get ('/creer', taches.creer);
 
-//sauvegarder un legume. /!\ cest un POST
+//sauvegarder un legume. /!\ c'est un POST
 router.post("/save", taches.save);
 
 //desactiver un enregistrement 

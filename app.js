@@ -1,15 +1,20 @@
 var mongoose = require('mongoose');
 var createError = require('http-errors');
 var express = require('express');
+var app = express();
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var app = express();
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
+var flash = require('express-flash');
+var urlRemote = process.env.MONGOLAB_URI;
+console.log(urlRemote);
+
 
 // Require Mongoose et connection à la bdd
-mongoose.connect("mongodb://localhost/planning")
+//mongoose.connect("mongodb://localhost/planning")
+mongoose.connect(urlRemote)
     .then (() => console.log('Connexion BDD OK'));
 
 var db = mongoose.connection;
@@ -23,7 +28,8 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(cookieParser('keyboard cat'));
+app.use(session({ cookie: { maxAge: 60000 }}));
 app.use(express.static(path.join(__dirname, 'public')));
 // utilisation des sessions
 app.use(session({
@@ -35,6 +41,7 @@ app.use(session({
         mongooseConnection: db
     })
 }));
+app.use(flash());
 
 // route qui affiche les  taches et les differentes actions possible
 var taches = require('./routes/taches');

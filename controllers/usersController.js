@@ -3,6 +3,7 @@ var user = require('../models/user');
 var bcrypt = require('bcrypt');
 var session = require('express-session');
 var fs = require('fs');
+var flash = require('express-flash');
 
 var userController = {};
 
@@ -18,9 +19,10 @@ userController.index = function(req, res){
     var month = today.getMonth()+1;
     var year = today.getFullYear();
     var todayDate = day + ' - ' + month + ' - ' + year;
+    req.flash('info', 'Welcome');
     res.render('../views/users/index', {
         username: req.session.userName,
-        success: req.session.success,
+        success: req.flash('info'),
         date: todayDate,
     });
     // req.session.success = "";
@@ -82,6 +84,11 @@ userController.auth = function(req, res){
       if(!err && user){
           bcrypt.compare(password, user.password, function(err, result){
               if (result === true){
+                  var message = {
+                      type: '',
+                      message: '',
+                      afficher: false
+                  };
                   req.session.userId = user._id;
                   req.session.userName = user.username;
                   req.session.date = new Date();
@@ -114,6 +121,7 @@ userController.auth = function(req, res){
 userController.logOut = function(req, res){
     if (req.session){
         // supprimer la session
+        console.log(req.session);
         req.session.destroy(function(err){
             if(!err){
                 res.redirect('/')

@@ -52,13 +52,16 @@
     <script src="javascripts/bootstrap-notify.js"></script>
     <script>
         if(error){
-
             $.notify({
                 // options
                 message: 'Erreur de mot de passe'
             },{
                 // settings
-                type: 'danger'
+                type: 'danger',
+                placement: {
+                    from: "top",
+                    align: "center"
+                }
             });
         }
     </script>
