@@ -1,7 +1,6 @@
 <!-- Fonction qui permet d'afficher la liste des tâches non affectée dans la liste déroulante -->
 var element_liste = "";
 <!-- Boucle dans la collections tâches -->
-<!-- affiche <option id='<:%= element._id%:>' value='<:%= element._id%:>'><:%= element.nom %:></option> si la condition est vraie -->
 <% taches.forEach(function (element) { %>
 
     <% if(!element.affecte){%>
