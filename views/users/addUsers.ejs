@@ -12,23 +12,40 @@
 <body>
     <h1 class="text-center py-5">Ajout d'un Admin</h1>
     <section class="container">
-        <form action="/admin/add" method="post">
-            <div class="form-group">
-                <label for="username">Nom d'utilisateur</label>
-                <input class="form-control" type="text" id="username" name="username" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Mot de passe</label>
-                <input class="form-control" type="password" id="password" name="password" required>
-            </div>
-            <div class="form-group">
-                <label for="passwordConfirmation">Confirmer le mot de passe</label>
-                <input class="form-control" type="password" id="passwordConfirmation" name="passwordConfirmation" required>
-            </div>
-            <button class="btn btn-primary" type="submit">Ajouter</button>
-            <a href="/" class="btn btn-info">Retour accueil</a>
-            <a href="/admin" class="btn btn-info">Retour connexion Admin</a>
-        </form>
+        <div class="col-md-8 offset-md-2">
+            <form action="/admin/add" method="post">
+                <div class="form-group">
+                    <label for="username">Nom d'utilisateur</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fas fa-user"></i></div>
+                        </div>
+                        <input class="form-control" type="text" id="username" name="username" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Mot de passe</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fas fa-key"></i></div>
+                        </div>
+                        <input class="form-control" type="password" id="password" name="password" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="passwordConfirmation">Confirmer le mot de passe</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fas fa-key"></i></div>
+                        </div>
+                        <input class="form-control" type="password" id="passwordConfirmation" name="passwordConfirmation" required>
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="submit">Ajouter</button>
+                <a href="/admin/index" class="btn btn-info">Retour accueil</a>
+                <a href="/admin" class="btn btn-info">Retour connexion Admin</a>
+            </form>
+        </div>
     </section>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>

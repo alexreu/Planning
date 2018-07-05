@@ -10,21 +10,31 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-        <a class="navbar-brand" href="#">Navbar</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand text-white">Administration</a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+
+                <li class="nav-item">
+                    <a href="/taches" class="nav-link">Gestion des Taches</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a href="/personnes" class="nav-link">Gestion Personnes</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/addUser" class="nav-link">Ajouter un administrateur</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item mr-auto pr-3">
+                    <span class="text-white">Date : <%= date %></span>
+                </li>
+                <li class="nav-item mr-auto">
+                    <span class="text-white">Utilisateur : <%= username %></span>
+                    <a href="/admin/logout" class="nav-link" >Déconnexion</a>
+
+                </li>
+            </ul>
         </div>
     </nav>
     <h1 class="text-center py-5">Bienvenue dans l'administration</h1>
@@ -38,10 +48,10 @@
         <%= success.info %>
         <% } %>
         <div class="row justify-content-around">
-            <a href="/admin/logout" class="btn btn-info">Déconnexion</a>
-            <a href="/taches" class="btn btn-info">Gestion des Taches</a>
-            <a href="/personnes" class="btn btn-info">Gestion Personnes</a>
-            <a href="/admin/addUser" class="btn btn-info">Ajouter un administrateur</a>
+
+
+
+
         </div>
     </section>
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
