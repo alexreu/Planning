@@ -13,6 +13,7 @@
 <body>
     <h1 class="text-center pb-5 pt-5">Création d'un utilisateur</h1>
     <section class="container">
+    <!-- condition d'affichage du message d'erreur définit dans le controller personnes-->
     <% if (error){%>
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
             <span><%= error %></span>
@@ -22,7 +23,7 @@
         </div>
     <% } %>
         <div class="col-md-6 offset-md-3">
-            <form action="save" method="POST">
+            <form action="save" method="POST"> <!-- action passe par la route personnes.save/ method passe par la route personnes.save-->
                 <div class="form-group">
                     <label for="nom">Nom</label>
                     <input type="text" class="form-control" name="nom" required/>

@@ -17,13 +17,13 @@
             <form action="/effectuer/save" method="POST">
                 <div class="form-group">
                     <label for="nom">Nom de la tâche</label>
-                    <input type="text" class="form-control" name="nomT" value="<%= effectuer.id_tache[0].nom %>" />
+                    <input type="text" class="form-control" name="nomT" value="<%= effectuer.id_tache[0].nom %>" />  <!-- récupération du Nom de la tâche affectée via la jointure(cf : populate) -->
                     <label for="com">Commentaire</label>
-                    <textarea type="text" class="form-control" name="nomT" value=""><%= effectuer.id_tache[0].commentaire %></textarea>
+                    <textarea type="text" class="form-control" name="nomT" value=""><%= effectuer.id_tache[0].commentaire %></textarea>  <!-- récupération du commentaire de la tâche affectée via la jointure(cf : populate) -->
                     <label for="nom">Nom de la personne</label>
-                    <input type="text" class="form-control" name="nomP" value="<%= effectuer.id_personne[0].nom %>"/>
+                    <input type="text" class="form-control" name="nomP" value="<%= effectuer.id_personne[0].nom %>"/> <!-- récupération du Nom de la personne affectée via la jointure(cf : populate) -->
                     <label for="prenom">Prénom</label>
-                    <input type="text" class="form-control" name="prenom" value="<%= effectuer.id_personne[0].prenom %>" />
+                    <input type="text" class="form-control" name="prenom" value="<%= effectuer.id_personne[0].prenom %>" /> <!-- récupération du prénom de la personne affectée via la jointure(cf : populate) -->
                     <input type="hidden" class="form-control" id="effectuer_id" value="<%= effectuer._id %>" name="effectuer_id">
                     
                     <div class="row mt-3 justify-content-around">

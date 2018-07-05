@@ -24,5 +24,5 @@ router.post('/login', users.auth);
 
 router.post('/add', users.add);
 
-
+//export du module router
 module.exports = router;

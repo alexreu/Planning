@@ -1,17 +1,20 @@
+//quelles technos? pourquoi? 
+//Node JS car seul langage pour coder le back end en javascript
+
 var mongoose = require('mongoose');
 var user = require('../models/user');
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcrypt'); // module qui permet de hasher le mot de passe avant l'envoi en BDD
 var session = require('express-session');
 var fs = require('fs');
 
 var userController = {};
 
-// fonction qui fait un rendu sur la page addUsers
+// fonction qui fait un renvoit sur la page addUsers
 userController.ajout = function(req, res){
     res.render("../views/users/addUsers");
 };
 
-// fonction qui fait un rendu sur la page index
+// fonction qui fait un renvoit sur la page index(page de login admin)
 userController.index = function(req, res){
     var today = new Date();
     var day = today.getDate();
@@ -48,7 +51,7 @@ user.schema.pre('save', function(next) {
     })
 });
 
-// ajout d'un admin en base
+// ajout d'un admin en BDD (création d'un admin pour pouvoir se connecter en tant qu'admin)
 userController.add = function (req, res) {
     // recuperation des variable dans le body
      var username = req.body.username;
@@ -73,8 +76,7 @@ userController.add = function (req, res) {
      }
 };
 
-//fonction qui recupere le username et le password et qui compare
-// avec ce qu'il y'a en bdd
+//fonction qui récupère le username et le password et qui  les compare avec ce qu'il y'a en bdd
 userController.auth = function(req, res){
   var username = req.body.username;
   var password = req.body.password;
@@ -124,4 +126,5 @@ userController.logOut = function(req, res){
     }
 };
 
+// module qui permet d'exporter le Controller user
 module.exports = userController;

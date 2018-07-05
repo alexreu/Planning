@@ -124,5 +124,5 @@ effectuerController.del = function(req, res){
     });
 };
 
-
+// module qui permet d'exporter le Controller effectuer
 module.exports = effectuerController;

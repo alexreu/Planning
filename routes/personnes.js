@@ -22,10 +22,8 @@ router.get("/creer", personne.create);
 
 //sauvegarder une personne
 router.post("/save", personne.save);
-//
-// //sauvegarder un legume. /!\ cest un POST
-// router.post("/save", personne.save);
 
+// Supprimer une personne
 router.get("/delete/:id", personne.delete);
 
 
@@ -33,5 +31,5 @@ router.get("/delete/:id", personne.delete);
 router.post("/edit", personne.edit);
 
 
-
+// module permmettant d'exporter le router personne
 module.exports = router;

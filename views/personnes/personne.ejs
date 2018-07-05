@@ -14,6 +14,7 @@
 </head>
 <body>
     <h1 class="text-center pt-5 pb-5">Liste des personnes</h1>
+    <!-- condition d'affichage du message success définit dans le controller personnes-->
     <% if(success) {%>
     <div class="alert alert-success alert-dismissible fade show" role="alert">
         <span><%= success %></span>
@@ -33,12 +34,14 @@
             </tr>
             </thead>
             <tbody>
+            <!-- Boucle dans la collection personnes pour afficher la liste des personnes en BDD-->
             <% personnes.forEach(function (element){ %>
             <tr>
                 <td><%= element.nom%></td>
                 <td><%= element.prenom%></td>
                 <td><%= element.mobile%></td>
                 <td>
+                <!-- Boutton => récupération des données de la personnes à modifier pour préremplir le modal-->
                     <button type="button" data-toggle="modal" data-target="#editModal" class="btn btn-primary" data-nom="<%= element.nom%>" data-prenom="<%= element.prenom%>" data-numero="<%= element.mobile%>" data-statut="<%= element.status%>" data-id="<%= element._id%>">Editer</button>
                     <a href="personnes/delete/<%= element._id %>" class="btn btn-danger text-white">Supprimer</a>
                 </td>
