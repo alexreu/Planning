@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 </head>
     <body>
+        <!-- condition d'affichage du message success définit dans le controller tâches-->
         <% if(success) {%>
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <span><%= success %></span>
@@ -18,35 +19,36 @@
             </div>
         <% } %>
         <div class="container">
-            <h1 class="text-center pt-5 pb-5">Liste Des Taches</h1>
+            <h1 class="text-center pt-5 pb-5">Liste des tâches</h1>
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">Taches</th>
-                        <th scope="col">Comentaire</th>
+                        <th scope="col">Tâches</th>
+                        <th scope="col">Commentaire</th>
                         <th scope="col">Affectation</th>
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
+                <!-- Boucle dans la collection tâches et affiche les datas ci-dessous-->
                 <% taches.forEach(function (element) { %>
                 <tr>
                     <td><%= element.nom %></td>
                     <td><%= element.commentaire %></td>
-                    <% if (element.affecte){ %>
+                    <% if (element.affecte){ %>// condtion d'affectation de la tâche Booléen
                         <td><i class="fas fa-check text-success"></i></td>
                     <% }else { %>
                         <td><i class="fas fa-times text-danger "></i></td>
                     <% } %>
                     <td>
                         <button class="btn btn-primary edit" data-toggle="modal" href="#update_modal" data-id= "<%= element._id%>" data-name="<%= element.nom %>" data-com="<%= element.commentaire%>" >Editer la tache</button>
-                        <a href="/taches/delete/<%= element._id %>" class="btn btn-danger">Supprimer la tache</a>
+                        <a href="/taches/delete/<%= element._id %>" class="btn btn-danger">Supprimer la tche</a>
                     </td>
                 </tr>
                 <% }) %>
                 </tbody>
             </table>
-            <a href="/taches/creer" class="btn btn-primary">Ajouter des taches</a>
+            <a href="/taches/creer" class="btn btn-primary">Ajouter des tâches</a>
             <a href="/admin/index" class="btn btn-info">Retour à l'accueil</a>
         </div>
        <!-- Modal -->
@@ -54,7 +56,7 @@
             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Mise a jour des taches</h5>
+                        <h5 class="modal-title">Mise à jour des taches</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -69,7 +71,7 @@
                                 <textarea rows="15" cols="" class="form-control" id="update_com" name="update_com" required></textarea>
                                 <input type="hidden" class="form-control" id="task_id" value="" name="task_id">
                             </div>
-                            <button type="submit" class="btn btn-primary" id="update_button">Mise a jour</button>
+                            <button type="submit" class="btn btn-primary" id="update_button">Mise à jour</button>
                         </form>
                     </div>
                     <div class="modal-footer">

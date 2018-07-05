@@ -1,3 +1,6 @@
+//quelles technos? pourquoi? 
+//Node JS car seul langage pour coder le back end en javascript
+
 //export du module
 var mongoose = require('mongoose');
 var taches = require('../models/taches');
@@ -32,12 +35,12 @@ tachesController.affecter = function(id){
     )
 };
 
-//redirection à la page de creation de taches 
+//Fonction qui renvoit à la page de création de tâches 
 tachesController.creer = function(req, res){     
     res.render("../views/taches/addTache",{ error: req.session.error}); 
 };
 
-//fonction qui enregistre une tache
+//fonction qui permet d'enregistrer une tache
 tachesController.save = function(req, res){
     var tache = new taches(req.body);
 
@@ -54,7 +57,7 @@ tachesController.save = function(req, res){
     });
 };
 
-//edition d'une tâche  par son id
+// Fonction qui permet l'edition d'une tâche identifiée par son ID
 tachesController.edit = function(req, res) {
     console.log(req.body.task_id);
     taches.findByIdAndUpdate(req.body.task_id, {
@@ -73,7 +76,7 @@ tachesController.edit = function(req, res) {
     });
 };
 
-//fonction supprimer
+//fonction  qui permet de supprimer un tâche identifiée par son ID
 tachesController.delete = function(req, res){
     var id= req.params.id;
     taches.findByIdAndDelete(id, function (err) {
@@ -86,4 +89,5 @@ tachesController.delete = function(req, res){
     })
 };
 
+// module qui permet d'exporter le Controller tâches
 module.exports = tachesController;

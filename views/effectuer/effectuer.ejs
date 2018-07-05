@@ -23,8 +23,9 @@
                     <div class="col-md-2">
                         <label class="my-1 mr-2" for="id_personne">Personnes</label>
                         <select class="custom-select my-1 mr-sm-2" id="id_personne" name="id_personne" required>
-                            <% personnes.forEach(function(element){ %>
-                            <option value="<%= element._id %>"><%= element.nom %> -- <%= element.prenom %></option>
+                         <!-- Boucle dans la collection personnes  qui va afficher toutes les personnes avec les datas ci-dessous dans la liste déroulante <%= element._id %>"><%= element.nom %> -- <%= element.prenom %>-->
+                            <% personnes.forEach(function(element){ %> 
+                            <option value="<%= element._id %>"><%= element.nom %> -- <%= element.prenom %></option> 
                             <% });%>
                         </select>
                     </div>
@@ -48,29 +49,31 @@
         </div>
         <div class="container pt-5" id="card-main">
             <div class="row justify-content-around">
+            <!-- Boucle qui va générer un card pour chaque élements tâches "complète" avec les datas ci-dessous-->
+               <!-- cf => line77 se réferer à l'édition d'une tâche pour la gestion des datas dans le modal -->
                 <% data.forEach(function (element) { %>
                 <div class="card mb-5" style="width: 18rem;">
                     <div class="card-body text-center">
-                        <% element.id_tache.forEach(function(element){%>
+                        <% element.id_tache.forEach(function(element){%> // boucle dans la collection tâche (cf=> jointure) et affiche dans le nom de la tâche selectionnée dans le menu déroulant
                         <h5 class="card-title"><%= element.nom %></h5>
                         <%})%>
-                        <% if(element.date_debut && element.date_fin) { %>
+                        <% if(element.date_debut && element.date_fin) { %>// condition d'affichage la data en fonction de sa disponibilitée
                         <h6><b>Du:</b> <%= element.date_debut %> <b>Au:</b> <%= element.date_fin%></h6>
                         <% } %>
-                        <% if(element.hour) { %>
+                        <% if(element.hour) { %>// condition d'affichage la data en fonction de sa disponibilitée
                         <h6><b>A :</b> <%= element.hour %> </h6>
                         <% } %>
                         <p class="card-text">
-                            <% element.id_tache.forEach(function (element) { %>
+                            <% element.id_tache.forEach(function (element) { %>// boucle dans la collection tâche (cf=> jointure) et affiche dans le commentaire de la tâche selectionnée dans le menu déroulant
                         <h6><b>Commentaire</b> : <%= element.commentaire %></h6>
                             <% }) %>
                         </p>
                         <p class="card-text">
-                            <% element.id_personne.forEach(function (element) { %>
+                            <% element.id_personne.forEach(function (element) { %>// boucle dans la collection personnes (cf=> jointure) et affiche dans le nom et le prénom de la personne selectionnée dans le menu déroulant
                         <h6><b>Attribuée à</b>  : <%= element.prenom %>  <%= element.nom %></h6>
                             <% }) %>
                         </p>
-                        <!--TODO modal edition de la tache a effectuer-->
+                    
                         <a href="#update_toDo" data-toggle="modal" class="btn btn-info bg-info" data-id="<%=element._id%>" data-debut="<%=element.date_debut%>" data-fin="<%=element.date_fin%>"data-hour="<%=element.hour%>">Editer</a>
                         <a href="/delete/<%= element._id %>" class="btn btn-primary bg-primary">X</a>
                     </div>

@@ -1,5 +1,9 @@
+//quelles technos? pourquoi? 
+//JQuery pour préremplir le modal avec les données en base avant modification (facilité de manipulation du DOM)
+
 $(function(){
    $("#editModal").on('show.bs.modal', function (event) {
+        // data collectées dans le bouton pour alimenter le modal => cf var modal = $(this);
        var button = $(event.relatedTarget);
        var person_id = button.data("id");
        var nom = button.data("nom");

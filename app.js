@@ -43,15 +43,15 @@ app.use(session({
 }));
 app.use(flash());
 
-// route qui affiche les  taches et les differentes actions possible
+// route qui affiche les  tâches et les differentes actions possibles
 var taches = require('./routes/taches');
 app.use('/taches', taches);
 
-// route qui affiches les personnes et les differentes actions possibles
+// route qui affiche les personnes et les différentes actions possibles
 var personnes = require('./routes/personnes');
 app.use('/personnes',personnes);
 
-// route qui affiches les taches à effectuer avec les differentes actions possible
+// route qui affiches les tâches à effectuer avec les differentes actions possibles
 var effectuer = require('./routes/effectuer');
 app.use('/', effectuer);
 
