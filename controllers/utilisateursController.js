@@ -6,19 +6,25 @@ var utilisateur = require("../models/personnes");
 var utilisateursController = {};
 
 utilisateursController.create = function(req, res){
-    res.render("../views/personnes/addPerson");
+    var err = 
+    res.render("../views/personnes/addPerson", {error: req.session.error});
 }; 
 
 //enregistrement des personnes
 utilisateursController.save = function(req, res){
+
     var personne = new utilisateur(req.body);
     personne.save(function(err){
         if(err){
+        req.body.error = 'Echec création utilisateur'
             console.log(err);
             res.render("../views/personnes/addPerson");
+
         } else{
             console.log("creation personne OK");
+            req.session.success = 'Utilisateur créé'
             res.redirect("/personnes");
+    
         } 
     });
 };
@@ -29,7 +35,8 @@ utilisateursController.list = function(req, res) {
         if(err){
             console.log('Error : ', err);
         }else{
-            res.render("../views/personnes/personne",{personnes:personnes} );
+            res.render("../views/personnes/personne",{personnes:personnes, success:req.session.success } );
+            
         } 
     });
 };
@@ -50,15 +57,16 @@ utilisateursController.edit = function(req, res) {
         }
     }, {new: true}, function (err, result) {
         if (err) {
+            req.session.error = 'Echec de la mise à jour'
             console.log(err);
         } else {
+            req.session.success = 'Utilisateur mis à jour';
             console.log(result);
             res.redirect("/personnes");
         }
     });
 };
 
-//------------------------A faire
 //fonction supprimer un utilisateur
 utilisateursController.delete = function(req, res){
     var id = req.params.id;
@@ -70,6 +78,8 @@ utilisateursController.delete = function(req, res){
             //console.log(message);
             res.redirect("/personnes");
         }else {
+            req.session.success = 'Utilisateur supprimé';
+
             res.redirect("/personnes");
         }
     })
