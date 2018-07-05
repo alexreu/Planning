@@ -16,7 +16,7 @@ function requireLogin (req, res, next) {
 };
 
 // route pour lister les taches
-router.get('/', requireLogin, taches.list);
+router.get('/', taches.list);
 
 // route pour créer une tache
 router.get ('/creer', taches.creer);
