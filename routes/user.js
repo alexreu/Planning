@@ -18,6 +18,8 @@ router.get('/index', requireLogin, users.index);
 
 router.get('/logout', users.logOut);
 
+router.get('/addUser', requireLogin, users.ajout);
+
 router.post('/login', users.auth);
 
 router.post('/add', users.add);

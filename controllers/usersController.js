@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var user = require('../models/user');
 var bcrypt = require('bcrypt');
 var session = require('express-session');
+var fs = require('fs');
 
 var userController = {};
 
@@ -12,7 +13,26 @@ userController.ajout = function(req, res){
 
 // fonction qui fait un rendu sur la page index
 userController.index = function(req, res){
-    res.render('../views/users/index', {username: req.session.userName});
+    var today = new Date();
+    var day = today.getDate();
+    var month = today.getMonth()+1;
+    var year = today.getFullYear();
+    var todayDate = day + ' - ' + month + ' - ' + year;
+    res.render('../views/users/index', {
+        username: req.session.userName,
+        success: req.session.success,
+        date: todayDate,
+    });
+    // req.session.success = "";
+    // console.log(req.session.success);
+};
+
+
+// fonction qui fait un rendu sur la page login
+userController.login = function(req, res){
+    res.render('../views/users/login', {
+        error: req.session.error,
+    })
 };
 
 // hash du password avant l'ajout en bdd
@@ -45,17 +65,12 @@ userController.add = function (req, res) {
         // on sauvegarde le new user en bdd
          userData.save(function (err) {
              if(!err){
-                 res.redirect('/admin/login');
+                 res.redirect('/admin');
              }else {
                  console.log("error =>", err)
              }
          })
      }
-};
-
-// fonction qui fait un rendu sur la page login
-userController.login = function(req, res){
-    res.render('../views/users/login')
 };
 
 //fonction qui recupere le username et le password et qui compare
@@ -69,6 +84,17 @@ userController.auth = function(req, res){
               if (result === true){
                   req.session.userId = user._id;
                   req.session.userName = user.username;
+                  req.session.date = new Date();
+                  req.session.success = 'Connexion Reussie';
+                  var dataLog = 'utilisateur : ' + req.session.userName + ' -- date : ' + req.session.date + '\r\n';
+                  console.log(dataLog);
+                  fs.appendFile('./log/log-connex-admin.txt', dataLog, 'utf8', function (err) {
+                      if(!err){
+                          console.log('log sauvegarder')
+                      }else {
+                          console.log('error =>', err);
+                      }
+                  });
                   //console.log(req.session.userName);
                   res.redirect('/admin/index');
               }else {
@@ -76,6 +102,7 @@ userController.auth = function(req, res){
               }
           })
       }else {
+          req.session.error = 'Mot de passe ou nom d\'utilisateur incorrect';
           console.log("error =>", err);
           return res.redirect('/admin');
       }
@@ -85,7 +112,6 @@ userController.auth = function(req, res){
 
 // fonction qui permet de destroy la session pour logout
 userController.logOut = function(req, res){
-    console.log(req.session);
     if (req.session){
         // supprimer la session
         req.session.destroy(function(err){
@@ -97,7 +123,5 @@ userController.logOut = function(req, res){
         })
     }
 };
-
-
 
 module.exports = userController;
