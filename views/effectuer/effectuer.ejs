@@ -23,7 +23,7 @@
                     <div class="col-md-2">
                         <label class="my-1 mr-2" for="id_personne">Personnes</label>
                         <select class="custom-select my-1 mr-sm-2" id="id_personne" name="id_personne" required>
-                         <!-- Boucle dans la collection personnes  qui va afficher toutes les personnes avec les datas ci-dessous dans la liste déroulante <%= element._id %>"><%= element.nom %> -- <%= element.prenom %>-->
+                         <!-- Boucle dans la collection personnes  qui va afficher toutes les personnes avec les datas ci-dessous dans la liste déroulante -->
                             <% personnes.forEach(function(element){ %> 
                             <option value="<%= element._id %>"><%= element.nom %> -- <%= element.prenom %></option> 
                             <% });%>

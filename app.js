@@ -13,7 +13,7 @@ console.log(urlRemote);
 
 
 // Require Mongoose et connection à la bdd
-mongoose.connect("mongodb://alexandre:alexandre974@ds127811.mlab.com:27811/simplonplanning\n")
+mongoose.connect("mongodb://alexandre:alexandre974@ds127811.mlab.com:27811/simplonplanning")
 //mongoose.connect(urlRemote)
     .then (() => console.log('Connexion BDD OK'));
 
